@@ -52,3 +52,37 @@ if p < r
     MERGE-SORT(A, q+1, r)
     MERGE(A, p, q, r)
 ```
+
+# Heapsort 堆排序
+堆指的是完全二叉树，分为最大堆最小堆。用数组表示时，很容易找到父子节点， 找到i节点的父节点 `parient(i) = i/2;`，左子节点 `left(i) = 2 * i;`， 右子节点 `right(i) = 2 * i + 1;`.
+堆有一些基本过程：
+- Max-Heapify 过程，时间复杂度 `O(logn)`，是维护最大堆性质的关键;
+- Build-Max-Heap 过程，具有线性时间复杂度，功能是从无序的输入数组中构造一个最大堆;
+- Heapsort 过程，时间复杂度`O(nlogn)`，功能是对一个数组进行原址排序;
+- Max-Heap-Insert, Heap-Extract-Max, Heap-Increase-Key, Heap-Maximum 过程，时间复杂度`O(logn)`，利用堆数据结构实现一个优先队列;
+
+```
+PARIENT(i)
+    return i/2
+
+LEFT(i)
+    return 2 * i
+
+RIGHT(i)
+    return 2 * i + 1
+```
+
+## 维持堆的性质
+```
+MAX-HEAPIFY(A, i)
+    l = LEFT(i)
+    r = RIGHT(i)
+    largest = i
+    if l <= A.heap-size and A[l] > a[i]:
+        largest = l
+    if r <= A.heap-size and A[r] > A[largest]:
+        largest = r
+    if largest != i
+        exchage A[i] with A[largest]
+        MAX-HEAPIFY(A, largest)
+```
