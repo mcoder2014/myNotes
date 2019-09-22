@@ -7,4 +7,8 @@ DESTDIR = ../bin
 OBJECTS_DIR = ./tmp
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        sort.cpp
+
+HEADERS += \
+    sort.h
