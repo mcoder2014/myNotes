@@ -3,14 +3,16 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
+SOURCES += \
+        divides.cpp \
+        main.cpp
+
 DESTDIR = ../bin
 OBJECTS_DIR = ./tmp
 
-
-
-SOURCES += \
-        main.cpp \
-        sort.cpp
+INCLUDEPATH += \
+    $$PWD/../SortAlgorithms
 
 HEADERS += \
-    sort.h
+    divides.h
+
