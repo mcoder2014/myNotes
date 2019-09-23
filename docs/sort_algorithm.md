@@ -1,6 +1,7 @@
 # Sort algorithms
 
 # Insertion Sort
+插入排序，时间复杂度O(n^2)
 ```
 INSERTION-SORT(A)
 for j = 2 to A.length
@@ -15,6 +16,8 @@ for j = 2 to A.length
 
 # Merge Sort 
 归并排序属于分治法，分治法在结构上是递归的，将原问题分解为几个规模较小但类似于原问题的子问题，递归地求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
+时间复杂度O(nlogn)
+
 分治法在每层递归时都包含三个步骤：
 - 分解：分解原问题为若干子问题，这些子问题是原问题的规模较小的实例。
 - 解决：解决这些子问题，递归地求解各子问题。如果子问题的规模足够小，就可以直接求解。
@@ -34,7 +37,7 @@ L[n1 + 1] = num_range.max()
 R[n2 + 1] = num_range.max()
 i = 1
 j = 1
-for k = p to r
+for k = p to rshijianfuzadu
     if L[i] <= R[j]
         A[k] = L[i]
         i = i + 1
@@ -176,4 +179,47 @@ PARTITION(A, p, r)
             exchange A[i] with A[j]
     exchange A[i+1] with A[r]
     return i+1
+```
+
+# 计数排序
+假设每一个输入元素都是整数类型，大小从0到k，记下比输入元素小的元素的个数，确定输出位置.
+不是基于比较的排序；
+
+```
+COUNTING-SORT(A, B, k)
+    let C[0..k] be a new array
+    for i = 0 to k
+        C[i] = 0
+    for j = 1 to A.length
+        C[A[j]] = C[A[j]] + 1
+    // C[i] now contains the number of elements equal to i
+    for i = 1 to k
+        C[i] = C[i] + C[i-1]
+    // C[i] new contains the number of elements less than or equal to i
+    for j = A.length downto 1
+        B[C[A[j]]] = A[j]
+        C[A[j]] = C[A[j]] - 1
+```
+
+# 基数排序 Radix sort
+对每一位上的数字进行排序，然后从个位一直排到最高位。
+```
+RADIX-SORT(A, d)
+    for i = 1 to d
+        use a stable sort to sort array A on digit i
+```
+
+# 桶排序 bucket sort
+通排序假设输入是[0,1],平均分布的小数，所以很少出现落在同一个区间的情况，平均时间复杂度O(n)
+```
+BUCKET-SORT(A)
+    let B[0..n-1] be a new array
+    n = A.length
+    for i = 0 to n - 1
+        make B[i] an empty list
+    for i = 1 to n
+        insert A[i] into list B[[nA[i]]]
+    for i = 0 to n-1
+        sort list B[i] with insertion sort
+    concatenate the lists B[0], B[1], ..., B[n-1] together in order
 ```

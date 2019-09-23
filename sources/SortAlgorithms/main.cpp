@@ -44,5 +44,10 @@ int main()
     randomized_quicksort(test_randomized_quick, 0, static_cast<int>(test_randomized_quick.size() - 1));
     std::cout << "Randomized quick sort:\t" << test_randomized_quick;
 
+    // Counting sort
+    std::vector<int> test_counting_sort(test_array);
+    std::vector<int> test_counting_sort_result = counting_sort(test_counting_sort, test_insertion[test_insertion.size() - 1]);
+    std::cout << "Counting sort:\t" << test_counting_sort_result;
+
     return 0;
 }

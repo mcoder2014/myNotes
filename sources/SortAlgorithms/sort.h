@@ -44,6 +44,10 @@ int partition(std::vector<int>& A, int p, int r);
 int randomized_partition(std::vector<int>& A, int p, int r);
 void randomized_quicksort(std::vector<int>& A, int p, int r);
 
+// Counting sort 计数排序
+std::vector<int> counting_sort(std::vector<int>& A, int k);
+
+
 // Helper
 std::ostream& operator << (std::ostream& out, std::vector<int> value);
 

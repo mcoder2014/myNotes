@@ -225,3 +225,27 @@ void randomized_quicksort(std::vector<int> &A, int p, int r)
         randomized_quicksort(A, q + 1, r);
     }
 }
+
+std::vector<int> counting_sort(std::vector<int> &A, int k)
+{
+    std::vector<int> B(A);
+    std::vector<int> C(static_cast<uint>(k+1), -1);
+    for(uint j =0; j < A.size(); j++)
+    {
+        C[static_cast<uint>(A[j])] ++;
+    }
+
+    for(uint i = 1; i < static_cast<uint>(k+1); i++)
+    {
+        C[i] += C[i-1];
+    }
+    for(int j = static_cast<int>(A.size()-1); j >=0; j--)
+    {
+        B[static_cast<uint>(C[static_cast<uint>(A[static_cast<uint>(j)])]--)] =
+                A[static_cast<uint>(j)];
+//        C[static_cast<uint>(A[static_cast<uint>(j)])] --;
+    }
+
+    return B;
+}
+
