@@ -47,6 +47,9 @@ void randomized_quicksort(std::vector<int>& A, int p, int r);
 // Counting sort 计数排序
 std::vector<int> counting_sort(std::vector<int>& A, int k);
 
+// randomized select 随机找到 第i个大小的元素 归并法
+int randomized_select(std::vector<int>& A, int p, int r, int i);
+
 
 // Helper
 std::ostream& operator << (std::ostream& out, std::vector<int> value);

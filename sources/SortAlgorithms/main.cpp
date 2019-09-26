@@ -39,10 +39,18 @@ int main()
     quicksort(test_quick, 0, static_cast<int>(test_quick.size() - 1));
     std::cout << "Quick sort:\t" << test_quick;
 
+
     // Randomized quick sort
     std::vector<int> test_randomized_quick(test_array);
     randomized_quicksort(test_randomized_quick, 0, static_cast<int>(test_randomized_quick.size() - 1));
     std::cout << "Randomized quick sort:\t" << test_randomized_quick;
+
+    // Randomized select
+    std::vector<int> test_randomized_select(test_array);
+    int random_select_result = randomized_select(
+                test_randomized_select,
+                0, static_cast<int>(test_randomized_quick.size() - 1), 7);
+    std::cout << "The sorted index id == 7 " << random_select_result << std::endl;
 
     // Counting sort
     std::vector<int> test_counting_sort(test_array);

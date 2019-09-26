@@ -249,3 +249,17 @@ std::vector<int> counting_sort(std::vector<int> &A, int k)
     return B;
 }
 
+
+int randomized_select(std::vector<int> &A, int p, int r, int i)
+{
+    if(p == r)
+        return A[static_cast<uint>(p)];
+    int q = randomized_partition(A, p, r);
+    int k = q - p;
+    if(i == k)
+        return A[static_cast<uint>(q)];
+    else if(i < k)
+        return randomized_select(A, p, q-1, i);
+    else
+        return randomized_select(A, q+1, r, i - k - 1);
+}

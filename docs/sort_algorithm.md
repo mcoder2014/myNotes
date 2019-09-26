@@ -223,3 +223,24 @@ BUCKET-SORT(A)
         sort list B[i] with insertion sort
     concatenate the lists B[0], B[1], ..., B[n-1] together in order
 ```
+
+# 随机选择算法
+**问题描述**：为了快速找到一组数列中第i个大小的元素<br>
+**解决方法**
+ 利用快排算法思路，剪掉了一个分支，期望的时间复杂度O(n)，最坏时间复杂度O(n^2)
+
+```
+RANDOMIZED-SELECT(A, p, r, i)
+    if p == r
+        return A[p]
+    q = RANDOMIZED-SELECT(A, p, r)
+    k = q - p + 1
+    if i == k   // the pivot value is the answer
+        return A[q]
+    elseif i < k
+        return RANDOMIZED-SELECT(A, p, q-1, i)
+    else
+        return RANDOMIZED-SELECT(A, q + 1, r, i - k)
+```
+
+# 
