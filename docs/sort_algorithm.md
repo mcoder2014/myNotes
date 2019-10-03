@@ -243,4 +243,5 @@ RANDOMIZED-SELECT(A, p, r, i)
         return RANDOMIZED-SELECT(A, q + 1, r, i - k)
 ```
 
-# 
+# reference
+1. [Algorithms 3rd]()
