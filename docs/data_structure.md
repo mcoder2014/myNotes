@@ -121,3 +121,4 @@ LIST-INSERT'(L, x)
 - 用`x.left-child`表示x节点的最左边的孩子节点；
 - 用`x.right-sibling`指针信息表示x的右边的兄弟节点；
 最终，每个节点有如下信息：`parent, left-child, right-sibling`;
+
