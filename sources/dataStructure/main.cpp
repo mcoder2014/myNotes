@@ -22,7 +22,7 @@ int main()
 
     std::cout << endl;
 
-    // 数组实现的栈
+    // Stack which is realized using array, and cannot auto resize
     Mcoder::Stack<int> stack(50);
     cout << "stack is empty: " << stack.empty()<<std::endl;
 
@@ -38,7 +38,26 @@ int main()
     std::cout << std::endl;
 
 
-    // 队列
+    // Queue which is realized using array with fixed size
+    // (need set size when initialized)
+    Mcoder::Queue<int> queue(11);
+    cout << "queue is empty: " << queue.empty()
+         << "\t queue is full: " << queue.full() << endl;
+
+    for (int item : test_array)
+    {
+        queue.enqueue(item);
+    }
+
+    cout << "queue is empty: " << queue.empty()
+         << "\t queue is full: " << queue.full() << endl;
+    for (int item : test_array)
+    {
+        int value = queue.dequeue();
+        cout << value << "\t";
+    }
+    cout << endl;
+
 
     // 双向链表
 

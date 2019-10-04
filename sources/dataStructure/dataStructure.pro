@@ -8,4 +8,5 @@ SOURCES += \
 
 HEADERS += \
     DataStructure \
+    queue.h \
     stack.h
