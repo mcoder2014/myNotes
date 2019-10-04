@@ -8,6 +8,7 @@ SOURCES += \
 
 HEADERS += \
     DataStructure \
+    binary_search_tree.h \
     doublylinkedlist.h \
     hash.h \
     queue.h \

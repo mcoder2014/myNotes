@@ -2,3 +2,4 @@
 #include "./queue.h"
 #include "./doublylinkedlist.h"
 #include "./rootedtrees.h"
+#include "./binary_search_tree.h"
