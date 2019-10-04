@@ -8,5 +8,8 @@ SOURCES += \
 
 HEADERS += \
     DataStructure \
+    doublylinkedlist.h \
+    hash.h \
     queue.h \
+    rootedtrees.h \
     stack.h
