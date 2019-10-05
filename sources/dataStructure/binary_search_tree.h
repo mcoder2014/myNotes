@@ -28,6 +28,7 @@ public:
 template <typename basetype>
 class BinarySearchTree
 {
+public:
     BinarySearchTreeNode<basetype> *root;
 
     BinarySearchTree()
@@ -36,11 +37,38 @@ class BinarySearchTree
     }
     ~BinarySearchTree()
     {
-        // 通过遍历来释放 node 的空间
+        // 通过中序遍历来释放 node 的空间
+        std::vector<BinarySearchTreeNode<basetype>*> nodes;
+
+        // 中序遍历，迭代法
+        if(root == nullptr) return;
+
+        BinarySearchTreeNode<basetype> *curr=root;
+        std::stack<BinarySearchTreeNode<basetype> *> st;
+
+        while(!st.empty() || curr!=NULL)
+        {
+            while(curr!=NULL)
+            {
+                st.push(curr);
+                curr=curr->lchild;
+            }
+            curr=st.top();
+            st.pop();
+
+            nodes.push_back(curr);
+            curr=curr->rchild;
+        }
+
+        for (BinarySearchTreeNode<basetype>* node:nodes )
+        {
+            delete node;
+        }
+
     }
     std::vector<basetype> inorder_iterative()
     {
-        return inorder(root);
+        return inorder_iterative(root);
     }
     std::vector<basetype> inorder_iterative(BinarySearchTreeNode<basetype> *root)
     {
@@ -58,13 +86,13 @@ class BinarySearchTree
             while(curr!=NULL)
             {
                 st.push(curr);
-                curr=curr->left;
+                curr=curr->lchild;
             }
             curr=st.top();
             st.pop();
 
-            ret.push_back(curr->val);
-            curr=curr->right;
+            ret.push_back(curr->data);
+            curr=curr->rchild;
         }
         return ret;
     }
@@ -159,7 +187,7 @@ class BinarySearchTree
                 x = x->rchild;
         }
 
-        node->parent = x;
+        node->parent = y;
         if(y == nullptr)
             root = node;
         else if(node->data < y->data)
@@ -192,9 +220,9 @@ class BinarySearchTree
             BinarySearchTreeNode<basetype>* y = minimum(z->rchild);
             if(y->parent != z)
             {
-                transplant(z, y);
-                y->lchild = z->lchild;
-                y->lchild->parent = y;
+                transplant(y, y->rchild);
+                y->rchild = z->rchild;
+                y->rchild->parent = y;
             }
 
             transplant(z, y);

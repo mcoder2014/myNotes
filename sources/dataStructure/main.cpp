@@ -67,5 +67,48 @@ int main()
 
     // 类似链表结构实现的有根数
 
+    // 二叉查找树
+    Mcoder::BinarySearchTree<int> binary_search_tree;
+    for (int item : test_array)
+    {
+        binary_search_tree.insert(item);
+    }
+    std::cout << "Minimum: " << binary_search_tree.minimum()->data
+              << "\tMaximum: " << binary_search_tree.maximum()->data
+              << "\n";
+
+    std::vector<int> bst_inorder_array = binary_search_tree.inorder_iterative();
+    std::cout << "inorder:";
+    for (int item: bst_inorder_array)
+    {
+        std::cout << "\t" << item;
+    }
+    std::cout << "\n";
+
+
+    for(int i=0; i < 5; i++)
+    {
+        Mcoder::BinarySearchTreeNode<int> * node = binary_search_tree.search(
+                    binary_search_tree.root, test_array[i]);
+        if(node != nullptr)
+        {
+            binary_search_tree.remove(node);
+            delete node;
+        }
+        std::cout << "Remove: " << test_array[i] << "\n";
+    }
+
+    std::cout << "Minimum: " << binary_search_tree.minimum()->data
+              << "\tMaximum: " << binary_search_tree.maximum()->data
+              << "\n";
+
+    bst_inorder_array = binary_search_tree.inorder_iterative();
+    std::cout << "inorder:";
+    for (int item: bst_inorder_array)
+    {
+        std::cout << "\t" << item;
+    }
+    std::cout << "\n";
+
     return 0;
 }

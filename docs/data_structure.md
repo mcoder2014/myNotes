@@ -209,7 +209,7 @@ TREE-INSERT(T, z)
         if z.key < x.key
             x = x.left
         else x = x.right
-    z.p = x
+    z.p = y
     if y == NIL
         T.root = z // tree T was empty
     else if z.key < y.key
@@ -236,9 +236,9 @@ TREE-DELETE(T, z)
     else 
         y = TREE-MINIMUM(z.right)
         if y.p != z
-            TRANSPLANT(T, z, y)
-            y.left = z.left
-            y.left.p = y
+            TRANSPLANT(T, y, y.right)
+            y.right = z.right
+            y.right.p = y
         TRANSPLANT(T, z, y)
         y.left = z.left
         y.left.p = y
