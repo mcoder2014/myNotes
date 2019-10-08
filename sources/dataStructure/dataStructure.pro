@@ -12,5 +12,6 @@ HEADERS += \
     doublylinkedlist.h \
     hash.h \
     queue.h \
+    red_black_tree.h \
     rootedtrees.h \
     stack.h
