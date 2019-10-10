@@ -46,9 +46,9 @@ public:
         BinarySearchTreeNode<basetype> *curr=root;
         std::stack<BinarySearchTreeNode<basetype> *> st;
 
-        while(!st.empty() || curr!=NULL)
+        while(!st.empty() || curr!=nullptr)
         {
-            while(curr!=NULL)
+            while(curr!=nullptr)
             {
                 st.push(curr);
                 curr=curr->lchild;
@@ -81,9 +81,9 @@ public:
         BinarySearchTreeNode<basetype> *curr=root;
         std::stack<BinarySearchTreeNode<basetype> *> st;
 
-        while(!st.empty() || curr!=NULL)
+        while(!st.empty() || curr!=nullptr)
         {
-            while(curr!=NULL)
+            while(curr!=nullptr)
             {
                 st.push(curr);
                 curr=curr->lchild;
@@ -166,6 +166,25 @@ public:
         return y;
     }
 
+    BinarySearchTreeNode<basetype> *predecessor(BinarySearchTreeNode<basetype> *node)
+    {
+        // 左支的最大值
+        if(node->lchild != nullptr)
+            return maximum(node->lchild);
+
+        BinarySearchTreeNode<basetype> *y = node->parent;
+        BinarySearchTreeNode<basetype> *x = node;
+        while (y != nullptr && x == y->lchild)
+        {
+            // x = y.lchild means that x < y
+            // x = y.rchild means that x > y
+            x = y;
+            y = y->parent;
+        }
+
+        return y;
+    }
+
     BinarySearchTreeNode<basetype> *insert(basetype value)
     {
         BinarySearchTreeNode<basetype> *node = new BinarySearchTreeNode<basetype>;
@@ -194,6 +213,8 @@ public:
             y->lchild = node;
         else
             y->rchild = node;
+
+        return node;
     }
 
     void transplant(BinarySearchTreeNode<basetype> *u, BinarySearchTreeNode<basetype> *v)
