@@ -160,6 +160,13 @@ MAX-HEAP-INSERT(A, key)
     HEAP-INCREASE-KEY(A, A.heap-size, key)
 ```
 
+## Leetcode
+### [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+TODO:
+### [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+TODO:
+### [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+TODO:
 # 快排算法
 快排是一种分治排序的方法，是原址排序，最差时间复杂度 O(n^2)，平均时间复杂度O(nlogn)。
 

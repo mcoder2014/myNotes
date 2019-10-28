@@ -286,5 +286,26 @@ TODO:
 ## 0-1 背包问题 
 TODO:
 
+# Leetcode
+## [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs)
+TODO:
+## [322. Coin Change](https://leetcode.com/problems/coin-change/)
+TODO:
+## [300. 最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
+TODO:
+## [139. Word Break](https://leetcode.com/problems/word-break/)
+TODO:
+## [198. 打家劫舍](https://leetcode-cn.com/problems/house-robber)
+TODO:
+## [213. 打家劫舍 II](https://leetcode-cn.com/problems/house-robber-ii)
+TODO:
+## [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
+TODO:
+## [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
+TODO:
+## [55. Jump Game](https://leetcode.com/problems/jump-game/)
+TODO:
+
 # Reference
-1 [Algorithm 3rd]()
+1. [Algorithm 3rd]()
+2. [yangshun.github.io](https://yangshun.github.io/tech-interview-handbook/algorithms/dynamic-programming)
