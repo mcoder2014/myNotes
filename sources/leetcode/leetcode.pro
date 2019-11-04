@@ -23,6 +23,12 @@ SUBDIRS += \
     29_divide_two_integers \
     2_add_two_numbers \
     30_substring_with_concatenation_of_all_words \
+    31_next_permutation \
+    32_longest_valid_parentheses \
+    33_search_in_rotated_sorted_array \
+    34_find_first_and_last_position_of_element_in_sorted_array \
+    35_search_insert_position \
+    36_valid_sudoku \
     3_longest_substring_without_repeating_characters \
     4_median_of_two_sorted_arrays \
     5_longest_palindromic_substring \
