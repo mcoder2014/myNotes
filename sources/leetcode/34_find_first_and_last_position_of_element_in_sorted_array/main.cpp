@@ -35,8 +35,6 @@ public:
                 upper++;
             return vector<int>({lower,upper});
         }
-
-
     }
 };
 

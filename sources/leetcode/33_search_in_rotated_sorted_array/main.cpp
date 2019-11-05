@@ -26,7 +26,7 @@ public:
             }
         }
         int round = idx_low;
-        cout << "round " << idx_low << endl;
+//        cout << "round " << idx_low << endl;
         idx_low = 0;
         idx_high = nums.size()-1;
         while(idx_low <= idx_high)
