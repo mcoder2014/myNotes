@@ -30,7 +30,10 @@ SUBDIRS += \
     35_search_insert_position \
     36_valid_sudoku \
     38_count_and_say \
+    39_combination_sum \
     3_longest_substring_without_repeating_characters \
+    40_combination_sum_II \
+    41_first_missing_positive \
     4_median_of_two_sorted_arrays \
     5_longest_palindromic_substring \
     6_zigzag_conversion \
