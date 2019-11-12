@@ -34,6 +34,8 @@ SUBDIRS += \
     3_longest_substring_without_repeating_characters \
     40_combination_sum_II \
     41_first_missing_positive \
+    42_trapping_rain_water \
+    43_multiply_strings \
     4_median_of_two_sorted_arrays \
     5_longest_palindromic_substring \
     6_zigzag_conversion \
