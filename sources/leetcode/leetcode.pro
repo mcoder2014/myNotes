@@ -36,10 +36,18 @@ SUBDIRS += \
     41_first_missing_positive \
     42_trapping_rain_water \
     43_multiply_strings \
+    44_wildcard_matching \
+    45_jump_game_II \
+    46_permutations \
+    47_permutations_II \
+    48_rotate_image \
+    49_group_anagrams \
     4_median_of_two_sorted_arrays \
     5_longest_palindromic_substring \
     6_zigzag_conversion \
+    76_minimum_window_substring \
     7_reverse_integer \
+    85_maximal_rectangle \
     8_string_to_integer_atoi \
     9_palindrome_number \
     demo
