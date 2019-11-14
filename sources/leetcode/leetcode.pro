@@ -44,6 +44,9 @@ SUBDIRS += \
     49_group_anagrams \
     4_median_of_two_sorted_arrays \
     50_pow_x_n \
+    51_n_queens \
+    53_maximum_subarray \
+    55_jump_game \
     5_longest_palindromic_substring \
     6_zigzag_conversion \
     76_minimum_window_substring \
