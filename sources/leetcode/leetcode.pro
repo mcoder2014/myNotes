@@ -46,7 +46,9 @@ SUBDIRS += \
     50_pow_x_n \
     51_n_queens \
     53_maximum_subarray \
+    54_spiral_matrix \
     55_jump_game \
+    56_merge_intervals \
     5_longest_palindromic_substring \
     6_zigzag_conversion \
     76_minimum_window_substring \

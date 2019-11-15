@@ -13,6 +13,39 @@ public:
         return result;
     }
 
+    int totalNQueens(int n)
+    {
+        vector<vector<int>> board(n, vector<int>(n,0));
+        return n_queen(board,0,0,n);
+    }
+    int n_queen(vector<vector<int>>& chessboard,
+                int i, int j, int index)
+    {
+        int result = 0;
+        int n = chessboard.size();
+        for(; i <n; i++)
+        {
+            for(; j < n; j++)
+            {
+                if(check(chessboard,i,j))
+                {
+                    if(index == 1)
+                    {
+                        result++;
+                    }
+                    else
+                    {
+                        chessboard[i][j] = 1;
+                        result += n_queen(chessboard,i+(j+1)/n,(j+1)%n,index-1);
+                        chessboard[i][j] = 0;
+                    }
+                }
+            }
+            j = 0;
+        }
+        return result;
+    }
+
     ///
     /// \brief n_queen
     /// \param chessboard
@@ -103,6 +136,8 @@ int main()
     auto test = [&](int n)
     {
         vector<vector<string>> result = solution.solveNQueens(n);
+        int total = solution.totalNQueens(n);
+        cout << "Total: " << total<<endl;
         for(vector<string>& res:result)
         {
             for(string& line: res)
