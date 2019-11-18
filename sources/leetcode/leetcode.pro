@@ -49,7 +49,14 @@ SUBDIRS += \
     54_spiral_matrix \
     55_jump_game \
     56_merge_intervals \
+    58_length_of_last_word \
+    59_spiral_matrix_II \
     5_longest_palindromic_substring \
+    60_permutation_sequence \
+    61_rotate_list \
+    62_unique_paths \
+    63_unique_paths_II \
+    65_valid_number \
     6_zigzag_conversion \
     76_minimum_window_substring \
     7_reverse_integer \

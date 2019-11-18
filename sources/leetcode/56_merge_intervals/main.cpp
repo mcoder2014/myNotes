@@ -29,7 +29,11 @@ public:
         }
         return intervals;
     }
-
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval)
+    {
+            intervals.push_back(newInterval);
+            return merge(intervals);
+    }
 };
 
 int main()
