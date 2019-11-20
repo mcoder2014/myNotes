@@ -57,8 +57,18 @@ SUBDIRS += \
     62_unique_paths \
     63_unique_paths_II \
     65_valid_number \
+    66_plus_one \
+    66_text_justification \
+    67_add_binary \
     6_zigzag_conversion \
+    70_climbing_stairs \
+    71_simplify_path \
+    72_edit_distance \
+    73_set_matrix_zeroes \
+    74_search_a_2d_matrix \
+    75_sort_colors \
     76_minimum_window_substring \
+    77_combinations \
     7_reverse_integer \
     85_maximal_rectangle \
     8_string_to_integer_atoi \
