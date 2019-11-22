@@ -69,7 +69,13 @@ SUBDIRS += \
     75_sort_colors \
     76_minimum_window_substring \
     77_combinations \
+    78_subsets \
+    79_word_search \
     7_reverse_integer \
+    80_remove_duplicates_from_sorted_array_II \
+    81_search_in_rotated_sorted_array_II \
+    82_remove_duplicates_from_sorted_list_II \
+    84_largest_rectangle_in_histogram \
     85_maximal_rectangle \
     8_string_to_integer_atoi \
     9_palindrome_number \
