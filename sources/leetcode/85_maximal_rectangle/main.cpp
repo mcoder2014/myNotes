@@ -1,11 +1,18 @@
-#include <iostream>
+# include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
 
 class Solution {
 public:
-    int maximalRectangle(vector<vector<char>>& matrix) {
+    int maximalRectangle(vector<vector<char>>& matrix)
+    {
+
+    }
+
+    int helper(vector<vector<char>>& matrix,int m, int n,
+               int lt_x,int lt_y, int i, int j)
+    {
 
     }
 };
