@@ -176,6 +176,38 @@ int main()
 
     }
 
+    /// 二叉树几种基础遍历方法
+    {
+        auto print = [&](std::vector<int>& result)
+        {
+            for(int item:result)
+                std::cout << item << " ";
+            std::cout << std::endl;
+        };
+
+        std::vector<BinaryTree<int>> nodes;
+        int n = 15;
+        for(int i =0; i < n; i++)
+            nodes.push_back(BinaryTree<int>(i));
+        for(int i = 1; i < n; i++)
+        {
+            if(2*i < n)
+                nodes[i].left = &(nodes[2*i]);
+            if(2*i+1 < n)
+                nodes[i].right = &(nodes[2*i+1]);
+        }
+
+        std::vector<int> pre = nodes[1].preOrder();
+        print(pre);
+        std::vector<int> in = nodes[1].inOrder();
+        print(in);
+        std::vector<int> post = nodes[1].postOrder();
+        print(post);
+        std::vector<int> level = nodes[1].levelOrder();
+        print(level);
+
+    }
+
 
     return 0;
 }

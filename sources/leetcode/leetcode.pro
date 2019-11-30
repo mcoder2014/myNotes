@@ -78,5 +78,9 @@ SUBDIRS += \
     84_largest_rectangle_in_histogram \
     85_maximal_rectangle \
     8_string_to_integer_atoi \
+    91_decode_ways \
+    92_reverse_linked_list_II \
+    93_restore_ip_address \
+    94_binary_tree_inorder_traversal \
     9_palindrome_number \
     demo
