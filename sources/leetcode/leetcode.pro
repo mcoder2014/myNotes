@@ -82,5 +82,7 @@ SUBDIRS += \
     92_reverse_linked_list_II \
     93_restore_ip_address \
     94_binary_tree_inorder_traversal \
+    97_interleaving_string \
     9_palindrome_number \
+    binary_search_tree \
     demo
