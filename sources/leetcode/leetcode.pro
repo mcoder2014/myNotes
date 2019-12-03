@@ -22,6 +22,7 @@ SUBDIRS += \
     28_implement_strSTR \
     29_divide_two_integers \
     2_add_two_numbers \
+    300_longest_increasing_subsequence \
     30_substring_with_concatenation_of_all_words \
     31_next_permutation \
     32_longest_valid_parentheses \
