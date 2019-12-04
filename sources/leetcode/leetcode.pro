@@ -86,4 +86,5 @@ SUBDIRS += \
     97_interleaving_string \
     9_palindrome_number \
     binary_search_tree \
+    binary_trees \
     demo
