@@ -39,3 +39,7 @@
 10. 解释器模式
 
 # 各设计模式对比总结及应用场景分析
+
+# Reference
+1. [图说设计模式](https://design-patterns.readthedocs.io/zh_CN/latest/index.html)
+2. [大话设计模式]()

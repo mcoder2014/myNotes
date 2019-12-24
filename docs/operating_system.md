@@ -119,6 +119,13 @@ x86-64寄存器的名称及注释
     > - 通过使用例如多个累计变量和重新结合等技术，找到方法提高指令级并行。
     > - 用功能性的风格重写条件操作，使得编译采用条件数据传送。
 
+# 经典问题
+## 生产着消费者
+## 读者写者
+## 哲学家就餐
+
 # Reference
 1. [你一定要搞明白的C函数调用方式与栈原理](https://mp.weixin.qq.com/s?__biz=MzU2MTkwMTE4Nw==&mid=2247486799&amp;idx=1&amp;sn=dcf7602b48a383d2d5cafcd6688d0445&source=41#wechat_redirect)
 2. [CSAPP:3rd]()
+3. [现代操作系统]()
+4. [APUE Unix环境高级编程]()

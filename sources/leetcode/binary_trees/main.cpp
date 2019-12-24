@@ -232,6 +232,54 @@ public:
         return root;
     }
 
+    /// path sum
+    bool hasPathSum(TreeNode* root, int sum)
+    {
+        if(root == nullptr)
+            return false;
+
+        if(root->left == nullptr && root->right == nullptr)
+            return sum == root->val;
+
+        if(hasPathSum(root->left, sum - root->val)) return true;
+        if(hasPathSum(root->right, sum - root->val)) return true;
+        return false;
+    }
+
+    /// 113 path sum II
+    vector<vector<int>> pathSum(TreeNode* root, int sum)
+    {
+        vector<int> path;
+        vector<vector<int>> results;
+        pathSum(root,sum,path, results);
+        return results;
+    }
+
+    bool pathSum(TreeNode* root, int sum,
+                 vector<int>& path, vector<vector<int>>& result)
+    {
+        if(root == nullptr)
+            return false;
+        if(root->left == nullptr && root->right == nullptr)
+        {
+            if(sum == root->val)
+            {
+                path.push_back(root->val);
+                // add to result
+                result.push_back(path);
+                path.erase(path.end()-1);
+                return true;
+            }
+            else
+                return false;
+        }
+        path.push_back(root->val);
+        bool bres = false;
+        bres |= pathSum(root->left,sum - root->val, path, result);
+        bres |= pathSum(root->right,sum-root->val, path, result);
+        path.erase(path.end()-1);
+        return bres;
+    }
 
 };
 int main()
