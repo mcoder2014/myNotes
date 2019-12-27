@@ -22,4 +22,10 @@ add_executable(test_fork_twice fork_twice.cpp)
 add_executable(with_compete with_compete.cpp)
 
 # with ipc
-add_executable(with_ipc with_ipc.cpp)
+#add_executable(with_ipc with_ipc.cpp)
+
+# test exec
+add_executable(test_exec test_exec.cpp)
+
+# test priority
+# add_executable(test_priority test_priority.cpp)
