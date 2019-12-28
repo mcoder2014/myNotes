@@ -24,17 +24,31 @@ main(void)
 
 	err = pthread_create(&tid1, NULL, thr_fn1, NULL);
 	if (err != 0)
-		err_exit(err, "can't create thread 1");
+    {
+        char error[] ="can't create thread 1"; 
+        err_exit(err, error);
+    }
+		
 	err = pthread_create(&tid2, NULL, thr_fn2, NULL);
 	if (err != 0)
-		err_exit(err, "can't create thread 2");
+		{
+        char error[] ="can't create thread 2"; 
+        err_exit(err, error);
+    }
 	err = pthread_join(tid1, &tret);
 	if (err != 0)
-		err_exit(err, "can't join with thread 1");
+    {
+        char error[] ="can't join with thread 1"; 
+        err_exit(err, error);
+    }
 	printf("thread 1 exit code %ld\n", (long)tret);
 	err = pthread_join(tid2, &tret);
 	if (err != 0)
-		err_exit(err, "can't join with thread 2");
+    {
+        char error[] ="can't join with thread 2"; 
+        err_exit(err, error);
+    }
 	printf("thread 2 exit code %ld\n", (long)tret);
 	exit(0);
 }
+
