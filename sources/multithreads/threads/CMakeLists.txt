@@ -1,7 +1,7 @@
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/threads/bin)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 link_directories(/usr/lib ${PROJECT_BINARY_DIR}/libs)
-link_libraries(apue pthread)
+link_libraries(pthread)
 
 # create multithreads
 # add_executable(thread_create thread_create.cpp)
@@ -17,10 +17,3 @@ foreach(filename ${TEST_SCRIPT})
     message("add_executable(${mainname} ${filename})")
     add_executable(${mainname} ${filename})
 endforeach()
-
-# #get other thread exit code
-# add_executable(thread_exit thread_exit_status)
-# target_link_libraries(thread_exit -lapue -lpthread )
-
-# add_executable(badexit2 badexit2)
-# target_link_libraries(badexit2 -lapue -lpthread )

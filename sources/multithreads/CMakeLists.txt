@@ -4,12 +4,17 @@ project(ML_THREADS)
 # build apue cpp libary
 add_subdirectory(apue)
 
+# using apue library
 include_directories(${PROJECT_SOURCE_DIR}/apue/include)
 link_directories(${PROJECT_BINARY_DIR}/libs)
-# include_directories(${PROJECT_SOURCE_DIR}/apue.3e/include)
-# link_directories(${PROJECT_SOURCE_DIR}/apue.3e/lib)
-link_libraries(apue)
 
+link_libraries(apue)    # add apue to all exe
+
+# the examples about progress
 add_subdirectory(progress)
+
+# the examples about threads
 add_subdirectory(threads)
+
+#the examples about signals
 add_subdirectory(signals)
