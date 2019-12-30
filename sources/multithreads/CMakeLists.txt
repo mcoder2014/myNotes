@@ -18,3 +18,6 @@ add_subdirectory(threads)
 
 #the examples about signals
 add_subdirectory(signals)
+
+# add ipc
+add_subdirectory(ipc)

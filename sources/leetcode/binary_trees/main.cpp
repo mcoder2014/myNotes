@@ -281,6 +281,31 @@ public:
         return bres;
     }
 
+    /// 114 flatten binary tree to linked list
+    void flatten(TreeNode* root)
+    {
+        flatten_helper(root);
+    }
+
+    TreeNode* flatten_helper(TreeNode *root)
+    {
+        if(root == nullptr)
+            return nullptr;
+
+        TreeNode *left = flatten_helper(root->left);
+        TreeNode *right = flatten_helper(root->right);
+
+        root->left = nullptr;
+        root->right = root->right = left;
+
+        TreeNode *con = root;
+        while (con->right != nullptr) {
+            con = con->right;
+        }
+        con->right = right;
+        return root;
+    }
+
 };
 int main()
 {
