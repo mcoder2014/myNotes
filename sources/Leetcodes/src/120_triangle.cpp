@@ -23,3 +23,8 @@ public:
     return minlen[0];
 }
 };
+
+int main()
+{
+    
+}

@@ -25,3 +25,8 @@ public:
         return generate(rowIndex)[rowIndex-1];
     }
 };
+
+int main()
+{
+    
+}
