@@ -94,6 +94,6 @@ int main()
     test("aabbc");
     test("a");
     test("bbbb");
-
+    test("ababababababababababababcbabababababababababababa");
     return 0;
 }
