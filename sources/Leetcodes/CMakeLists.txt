@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.1)
 project(LEETCODES)
 
 # 编译路径下的多个 cpp 文件

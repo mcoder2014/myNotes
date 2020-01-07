@@ -1,5 +1,8 @@
 # 计算法网络
 
+# 模型
+# socket 过程
+
 # Reference
 1. [图解 TCP/IP]()
 2. [图解 HTTP]()
