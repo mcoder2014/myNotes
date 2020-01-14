@@ -21,3 +21,6 @@ add_subdirectory(signals)
 
 # add ipc
 add_subdirectory(ipc)
+
+# socket
+add_subdirectory(socket)
