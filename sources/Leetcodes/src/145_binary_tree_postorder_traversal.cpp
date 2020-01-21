@@ -52,3 +52,8 @@ public:
         return nodes;
     }
 };
+
+int main()
+{
+    return 0;
+}
