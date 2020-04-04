@@ -5,5 +5,6 @@ SUBDIRS += \
     SortAlgorithms \
     dataStructure \
     dynamic_programming \
-    leetcode \
-    the_coding_interview
+#    leetcode \
+#    the_coding_interview \
+    cpp11_threads_test
