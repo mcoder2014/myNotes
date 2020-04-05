@@ -3,4 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
     hello_world \
     good_singleton \
-    deadlock
+    deadlock \
+    static_var_init \
+    read_writelock \
+    condition
