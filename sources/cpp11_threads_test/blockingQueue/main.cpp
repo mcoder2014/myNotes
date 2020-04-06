@@ -25,6 +25,7 @@ void worker()
             sum += i;
         }
 
+        // 模拟耗时操作
         Sleep(100);
 
         std::lock_guard<mutex> lock(mutex_cout);
@@ -43,7 +44,7 @@ void master()
     {
         blockingqueue.push(rand()%10000);
         printf("%s %d %i\n",__FUNCTION__, __LINE__, i);
-        Sleep(50);
+        Sleep(20);
     }
 }
 
