@@ -6,4 +6,5 @@ SUBDIRS += \
     deadlock \
     static_var_init \
     read_writelock \
-    condition
+    condition \
+    blockingQueue
