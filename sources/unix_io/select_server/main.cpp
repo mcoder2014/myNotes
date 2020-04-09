@@ -30,12 +30,12 @@ int main(int argc, char **argv)
         nready, 
         i;
     struct addrinfo *res0, *res, hints;
-    char buffer[BUFSIZ];
+    char buffer[BUFSIZ];        // 8196
 
     fd_set master, readfds;
     ssize_t nbytes;
 
-    // 初始化地址
+    // 用0 填充
     memset(&hints, '\0', sizeof(struct addrinfo));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
@@ -74,14 +74,24 @@ int main(int argc, char **argv)
 
     if(-1 == (listen(sockfd, 32)))
         die("listen()");
-    if(-1 == (fcntl(sockfd, F_SETFD, O_NONBLOCK)))
+
+    //设置new_fd无阻塞属性
+    int flags;
+    if ((flags = fcntl(sockfd, F_GETFL, 0)) < 0)
+    {
+        perror("fcntl F_GETFL");
+    }
+    flags |= O_NONBLOCK;
+    if (fcntl(sockfd, F_SETFL, flags) < 0)
+    {
         die("fcntl()");
+    }
 
     FD_ZERO(&master);
     FD_ZERO(&readfds);
     FD_SET(sockfd, &master);
 
-    maxfd = sockfd;
+    maxfd = sockfd;     // 此时只有一个文件描述符
 
     while(1)
     {
@@ -96,9 +106,11 @@ int main(int argc, char **argv)
         {
             if(FD_ISSET(i, &readfds))
             {
+                // 检查文件描述符
                 nready--;
                 if(i == sockfd)
                 {
+                    // 如果 socket 的文件描述符有变化，可能是有连接建立
                     printf("Trying to accept() neww connection(s)\n");
 
                     if(-1 == (neww = accept(sockfd, NULL, NULL)))
@@ -107,21 +119,29 @@ int main(int argc, char **argv)
                             die("accept()");
                         break;
                     }
-                    
                     else
                     {
-                        if(-1 == (fcntl(neww, F_SETFD, O_NONBLOCK)))
+                        int flags;
+                        if ((flags = fcntl(neww, F_GETFL, 0)) < 0)
+                        {
+                            perror("fcntl F_GETFL");
+                        }
+                        flags |= O_NONBLOCK;
+                        if (fcntl(neww, F_SETFL, flags) < 0)
+                        {
                             die("fcntl()");
+                        }
 
+                        // 将新的描述符加入到集合中
                         FD_SET(neww, &master);
 
                         if(maxfd < neww)
                             maxfd = neww;
                     }
                 }
-
                 else
                 {
+                    // 其他描述符发生改变，说明有描述符进入了可以状态，接受消息
                     (void)printf("recv() data from one of descriptors(s)\n");
 
                     nbytes = recv(i, buffer, sizeof(buffer), 0);
@@ -133,13 +153,13 @@ int main(int argc, char **argv)
                     }
 
                     buffer[nbytes] = '\0';
-                    printf("%s", buffer);
+                    printf("%s\n", buffer);
                     
                     (void)printf("%zi bytes received.\n", nbytes);
 
+                    // 关闭连接
                     close(i);
                     FD_CLR(i, &master);
-
                 }
             }
 
