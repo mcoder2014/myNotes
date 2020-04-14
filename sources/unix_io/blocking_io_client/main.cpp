@@ -49,6 +49,7 @@ void link_with_server()
         perror("recv");
         exit(1);
     }
+    printf("Receive message from server: %d \n %s\n", numbytes,buf);
 
     close(sockfd);
 }

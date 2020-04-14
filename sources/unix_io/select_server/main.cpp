@@ -31,8 +31,9 @@ int main(int argc, char **argv)
         i;
     struct addrinfo *res0, *res, hints;
     char buffer[BUFSIZ];        // 8196
+    char sendBuffer[100] = "This is a select io server";
 
-    fd_set master, readfds;
+    fd_set master, readfds, writefds;
     ssize_t nbytes;
 
     // 用0 填充
@@ -89,6 +90,7 @@ int main(int argc, char **argv)
 
     FD_ZERO(&master);
     FD_ZERO(&readfds);
+    FD_ZERO(&writefds);
     FD_SET(sockfd, &master);
 
     maxfd = sockfd;     // 此时只有一个文件描述符
@@ -96,9 +98,10 @@ int main(int argc, char **argv)
     while(1)
     {
         memcpy(&readfds, &master, sizeof(master));
+        memcpy(&writefds, &master, sizeof(master));
         printf("running select()\n");
 
-        if(-1 == (nready = select(maxfd+1, &readfds, NULL, NULL, NULL)))
+        if(-1 == (nready = select(maxfd+1, &readfds, &writefds, NULL, NULL)))
             die("select()");
         printf("Number of ready descriptor: %d\n", nready);
 
@@ -111,27 +114,16 @@ int main(int argc, char **argv)
                 if(i == sockfd)
                 {
                     // 如果 socket 的文件描述符有变化，可能是有连接建立
-                    printf("Trying to accept() neww connection(s)\n");
-
+                    printf("Trying to accept() new connection(s)\n");
                     if(-1 == (neww = accept(sockfd, NULL, NULL)))
                     {
+                        // 失败，报错
                         if(EWOULDBLOCK != errno)
                             die("accept()");
                         break;
                     }
                     else
                     {
-                        int flags;
-                        if ((flags = fcntl(neww, F_GETFL, 0)) < 0)
-                        {
-                            perror("fcntl F_GETFL");
-                        }
-                        flags |= O_NONBLOCK;
-                        if (fcntl(neww, F_SETFL, flags) < 0)
-                        {
-                            die("fcntl()");
-                        }
-
                         // 将新的描述符加入到集合中
                         FD_SET(neww, &master);
 
@@ -142,8 +134,6 @@ int main(int argc, char **argv)
                 else
                 {
                     // 其他描述符发生改变，说明有描述符进入了可以状态，接受消息
-                    (void)printf("recv() data from one of descriptors(s)\n");
-
                     nbytes = recv(i, buffer, sizeof(buffer), 0);
                     if(nbytes <= 0)
                     {
@@ -153,16 +143,21 @@ int main(int argc, char **argv)
                     }
 
                     buffer[nbytes] = '\0';
-                    printf("%s\n", buffer);
-                    
-                    (void)printf("%zi bytes received.\n", nbytes);
-
-                    // 关闭连接
-                    close(i);
-                    FD_CLR(i, &master);
+                    printf("%zi bytes received. fd: \n", nbytes, i);
+                    printf("%s\n\n", buffer);
                 }
             }
 
+            if (FD_ISSET(i, &writefds))
+            {
+                nready--;
+                printf("Send Message to Client %d\n", i);
+                if (send(i, sendBuffer, strlen(sendBuffer), 0) == -1)
+                {
+                    die("send");
+                }
+                close(i);
+            }
         }
 
     }
