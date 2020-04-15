@@ -17,7 +17,7 @@ using namespace std;
 char buf[100] = "hello world From blocking io";
 struct hostent *he;
 struct sockaddr_in their_addr;
-int threads_count = 10;
+int threads_count = 4;
 
 void link_with_server()
 {
