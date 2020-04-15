@@ -5,8 +5,11 @@ SUBDIRS += \
     blocking_io_client \
     nonblocking_io_server \
     nonblocking_io_client \
-#    aio_server \
-#    aio_client
     select_server \
-    poll_server \
-    epoll_server
+    poll_server 
+
+unix:!macx{
+    SUBDIRS += \
+        epoll_server
+}
+    
