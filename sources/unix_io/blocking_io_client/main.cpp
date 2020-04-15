@@ -36,6 +36,7 @@ void link_with_server()
     }
 
     //向服务器发送字符串
+    printf("Send Message to Server\n");
     if(send(sockfd,buf,strlen(buf),0)==-1)
     {
         perror("send");
