@@ -18,16 +18,16 @@
 
 #define PORT "8080"
 
-/* function prototypes */
 void die(const char*);
+void setNoBlocking(int fd);
 
 int main(int argc, char **argv)
 {
     int sockfd,     // socket 的文件描述符
-        neww, 
-        maxfd, 
-        on = 1, 
-        nready, 
+        newFd,      // 新建的描述符
+        maxfd,      // 最大的 fd
+        on = 1,      
+        nready,     // 收到的数字
         i;
     struct addrinfo *res0, *res, hints;
     char buffer[BUFSIZ];        // 8196
@@ -92,7 +92,6 @@ int main(int argc, char **argv)
     FD_ZERO(&readfds);
     FD_ZERO(&writefds);
     FD_SET(sockfd, &master);
-
     maxfd = sockfd;     // 此时只有一个文件描述符
 
     while(1)
@@ -115,7 +114,7 @@ int main(int argc, char **argv)
                 {
                     // 如果 socket 的文件描述符有变化，可能是有连接建立
                     printf("Trying to accept() new connection(s)\n");
-                    if(-1 == (neww = accept(sockfd, NULL, NULL)))
+                    if(-1 == (newFd = accept(sockfd, NULL, NULL)))
                     {
                         // 失败，报错
                         if(EWOULDBLOCK != errno)
@@ -124,11 +123,11 @@ int main(int argc, char **argv)
                     }
                     else
                     {
-                        // 将新的描述符加入到集合中
-                        FD_SET(neww, &master);
-
-                        if(maxfd < neww)
-                            maxfd = neww;
+                        // 新建描述
+                        setNoBlocking(newFd);
+                        FD_SET(newFd, &master);
+                        if(maxfd < newFd)
+                            maxfd = newFd;
                     }
                 }
                 else
@@ -157,11 +156,10 @@ int main(int argc, char **argv)
                     die("send");
                 }
                 close(i);
+                FD_CLR(i, &master);
             }
         }
-
     }
-
     return 0;
 }
 
@@ -169,4 +167,9 @@ void die(const char *msg)
 {
     perror(msg);
     exit(EXIT_FAILURE);
+}
+
+void setNoBlocking(int fd)
+{
+    fcntl(fd, F_SETFL, O_NONBLOCK);
 }

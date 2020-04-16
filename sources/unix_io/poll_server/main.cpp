@@ -16,6 +16,9 @@ using namespace std;
 
 #define MAXBUF 8196
 
+void setNoBlocking(int fd);
+void closePollLink(pollfd& pollFd);
+
 int main(int argc, char *argv[])
 {
     char buffer[MAXBUF];
@@ -54,12 +57,12 @@ int main(int argc, char *argv[])
 
     while (true)
     {
-        printf("round again\n");
         if (poll(pollfds, fdCounts, 5000) == 0)
             continue;
+
         if (pollfds[0].revents & POLLIN)
         {
-            // 建立 socket 链接
+            // 建立 socket 连接
             int sin_size = sizeof(struct sockaddr_in);
             if (-1 == (pollfds[fdCounts].fd = accept(sockfd, (struct sockaddr *)&client, (socklen_t *)&sin_size)))
             {
@@ -69,6 +72,7 @@ int main(int argc, char *argv[])
             else
             {
                 printf("Accept link %d\n", fdCounts);
+                setNoBlocking(pollfds[fdCounts].fd);
                 pollfds[fdCounts].events = POLLIN | POLLOUT;
                 fdCounts++;
             }
@@ -78,36 +82,57 @@ int main(int argc, char *argv[])
         {
             if(pollfds[i].revents != 0)
                 printf("Index %d  event : 0x%04x\n", i, pollfds[i].revents);
+
             if (pollfds[i].revents & POLLIN)
             {
-                printf("index %d POLLIN event!\n", i);
                 memset(buffer, 0, MAXBUF);
-                if (recv(pollfds[i].fd, buffer, MAXBUF, 0) < 0)
+                int recvLength = recv(pollfds[i].fd, buffer, MAXBUF, 0);
+                if (recvLength < 0)
+                {
                     perror("recv() error!\n");
+                }    
+                else if(recvLength == 0)
+                {
+                    closePollLink(pollfds[i]);
+                }
                 else
+                {
                     printf("index = %d Content = %s\n", i, buffer);
+                }
             }
 
             if (pollfds[i].revents & POLLOUT)
             {
-                printf("index %d POLLOUT event!\n", i);
                 if(!sendCount[i])
                 {
                     sendCount[i]++;
                     printf("Send message to Client = %d\n", i);
-                    if (send(pollfds[i].fd, sendBuffer, strlen(sendBuffer), 0) < 0)
+                    int sendLength = send(pollfds[i].fd, sendBuffer, strlen(sendBuffer), 0);
+                    if(sendLength < 0)
+                    {
                         perror("send() error!\n"); 
+                    }
                 }
             }
 
             if(pollfds[i].revents & POLLHUP)
             {
-                close(pollfds[i].fd);
-                pollfds[i].fd = -1;
+                closePollLink(pollfds[i]);
             }
             pollfds[i].revents = 0;
         }
     }
 
     return 0;
+}
+
+void setNoBlocking(int fd)
+{
+    fcntl(fd, F_SETFL, O_NONBLOCK);
+}
+
+void closePollLink(pollfd& pollFd)
+{
+    close(pollFd.fd);
+    pollFd.fd = -1;
 }

@@ -11,16 +11,23 @@
 #include <thread>
 #include <vector>
 
+#include <atomic>
+
 using namespace std;
 
 
-char buf[100] = "hello world From blocking io";
+char sendBuff[8196] = "hello world From blocking io";
+char recvBuff[8196];
 struct hostent *he;
 struct sockaddr_in their_addr;
 int threads_count = 4;
+atomic_int thread_count;
 
 void link_with_server()
 {
+    thread_count.fetch_add(1);
+    int thread_id = thread_count.load();
+
     int sockfd, numbytes;
     //建立一个TCP套接口
     if((sockfd = socket(AF_INET,SOCK_STREAM,0))==-1)
@@ -36,21 +43,22 @@ void link_with_server()
     }
 
     //向服务器发送字符串
-    printf("Send Message to Server\n");
-    if(send(sockfd,buf,strlen(buf),0)==-1)
+    printf("Thread: %d Send Message to Server\n", thread_id);
+    if(send(sockfd,sendBuff,strlen(sendBuff),0)==-1)
     {
         perror("send");
         exit(1);
     }
-    memset(buf,0,sizeof(buf));
+    memset(sendBuff,0,sizeof(sendBuff));
 
     //接受从服务器返回的信息
-    if((numbytes = recv(sockfd,buf,100,0))==-1)
+    if((numbytes = recv(sockfd,recvBuff,sizeof(recvBuff),0))==-1)
     {
         perror("recv");
         exit(1);
     }
-    printf("Receive message from server: %d \n %s\n", numbytes,buf);
+    printf("Thread: %d Receive message from server: %d \n %s\n",
+        thread_id, numbytes,recvBuff);
 
     close(sockfd);
 }
@@ -71,6 +79,8 @@ int main(int argc,char *argv[])
     their_addr.sin_port = htons(atoi(argv[2]));
     their_addr.sin_addr = *((struct in_addr *)he->h_addr);
     bzero(&(their_addr.sin_zero),8);
+
+    thread_count.store(0);
 
     std::vector<thread> th_clients;
     for(int i =0; i <threads_count; i++)
