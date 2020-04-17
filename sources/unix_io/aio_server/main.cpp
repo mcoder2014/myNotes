@@ -91,8 +91,6 @@ int main()
 		perror("listen");
 		return -1;
 	}
-	
-	
 	printf("server is running!\n");
 	
 	//等待连接

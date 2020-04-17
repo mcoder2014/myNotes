@@ -1,6 +1,7 @@
 # apue
 /apue.3e
 
+build
 #################### C++ #####################
 # Prerequisites
 *.d
