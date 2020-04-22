@@ -17,7 +17,7 @@ public:
         if(prices.size() < 2)
             return 0;
         int maxBuy = 2;
-        vector<vector<int>> dp(maxBuy+1, vector<int>(prices.size(), 0));
+        vector<vector<int> > dp(maxBuy+1, vector<int>(prices.size(), 0));
 
         for(int k = 1; k <= maxBuy; k++)
         {
