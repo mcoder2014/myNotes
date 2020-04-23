@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    abstract_test \
     hello_world \
     good_singleton \
     deadlock \

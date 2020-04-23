@@ -7,3 +7,8 @@ DESTDIR = ../bin
 
 SOURCES += \
         main.cpp
+
+unix {
+LIBS += \
+    -lpthread
+}

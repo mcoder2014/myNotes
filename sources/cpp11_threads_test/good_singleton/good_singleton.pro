@@ -17,3 +17,8 @@ HEADERS += \
     singleinstanceii.h \
     singleinstanceiii.h \
     singleinstanceiv.h
+
+unix {
+LIBS += \
+    -lpthread
+}

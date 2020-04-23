@@ -8,3 +8,8 @@ SOURCES += \
 
 HEADERS += \
     blockingqueue.h
+
+unix {
+LIBS += \
+    -lpthread
+}

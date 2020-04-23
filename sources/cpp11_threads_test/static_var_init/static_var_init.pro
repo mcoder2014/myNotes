@@ -11,3 +11,9 @@ SOURCES += \
 
 HEADERS += \
     a.h
+
+unix {
+LIBS += \
+    -lpthread
+}
+
