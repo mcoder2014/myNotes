@@ -7,4 +7,6 @@ SUBDIRS += \
     static_var_init \
     read_writelock \
     condition \
-    blockingQueue
+    blockingQueue \
+    future_test \
+    functors_test

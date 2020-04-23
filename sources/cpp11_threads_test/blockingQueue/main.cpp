@@ -2,8 +2,9 @@
 #include <thread>
 #include <mutex>
 #include <random>
+#include <sys/poll.h>
 
-#include <windows.h>
+// #include <windows.h>
 
 #include <blockingqueue.h>
 using namespace std;
@@ -26,7 +27,7 @@ void worker()
         }
 
         // 模拟耗时操作
-        Sleep(100);
+        poll(nullptr, 0, 100);
 
         std::lock_guard<mutex> lock(mutex_cout);
         std::cout << "workder: " << this_id << " "
@@ -44,7 +45,7 @@ void master()
     {
         blockingqueue.push(rand()%10000);
         printf("%s %d %i\n",__FUNCTION__, __LINE__, i);
-        Sleep(20);
+        poll(nullptr, 0, 20);
     }
 }
 

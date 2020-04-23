@@ -13,16 +13,16 @@ static std::mutex mutex_lock;
 static std::condition_variable condition;
 
 static std::stack<int> stk;
-static atomic_int count(0);
+atomic_int counter(0);
 
 void push()
 {
-    for(; count.load() < task; count.fetch_add(1))
+    for(; counter.load() < task; counter.fetch_add(1))
     {
         std::unique_lock<mutex> lock(mutex_lock);
-        stk.push(count.load());
+        stk.push(counter.load());
         condition.notify_all();
-        printf("%s %d push data %d \n", __FUNCTION__, __LINE__, count.load());
+        printf("%s %d push data %d \n", __FUNCTION__, __LINE__, counter.load());
     }
 }
 
@@ -30,7 +30,7 @@ void pop()
 {
     thread::id this_id = this_thread::get_id();
 
-    while(count.load() < task)
+    while(counter.load() < task)
     {
         std::unique_lock<mutex> lock(mutex_lock);
         condition.wait(lock);
