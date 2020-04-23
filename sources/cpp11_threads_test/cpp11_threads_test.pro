@@ -9,4 +9,5 @@ SUBDIRS += \
     condition \
     blockingQueue \
     future_test \
-    functors_test
+    functors_test \
+    callback_test
