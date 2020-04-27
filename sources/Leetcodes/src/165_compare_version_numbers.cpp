@@ -29,7 +29,7 @@ public:
                 diff += getMajorVersion(version2);
             }
             if(diff > 0)
-                return 1;
+                return -1;
             return 0;
         } else {
             return 0;
