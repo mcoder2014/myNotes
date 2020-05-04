@@ -15,7 +15,7 @@ public:
         for(vector<int> &a:prerequisites)
         {
             gra[a[1]].insert(a[0]);
-            de[a[1]]++;
+            de[a[0]]++;
         }
         
         for(int i=0;i<numCourses;++i)
