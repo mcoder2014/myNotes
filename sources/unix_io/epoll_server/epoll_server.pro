@@ -5,5 +5,7 @@ CONFIG -= qt
 
 DESTDIR = ../bin
 
+TARGET = epoll_server
+
 SOURCES += \
         main.cpp

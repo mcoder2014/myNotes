@@ -9,8 +9,10 @@ SUBDIRS += \
     select_server \
     poll_server \
     # 异步 io
-    aio_server \
-    blocking_io_client 
+    #aio_server \
+    blocking_io_client \
+    # 文件操作
+    simple_copy
 
 unix:!macx{
     SUBDIRS += \
