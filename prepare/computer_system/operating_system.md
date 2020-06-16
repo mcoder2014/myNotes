@@ -80,7 +80,7 @@ x86-64寄存器的名称及注释
 
 如图所示，是ia32的栈变换的效果
 
-![](imgs/ia32_stack_before_call.png)
+![](../imgs/ia32_stack_before_call.png)
 
 ### 被调用者在函数调用后的动作
 1. 建立自己的栈帧，因为当前%ebp正指向调用函数P的栈帧开始，所以将栈帧指针%ebp进栈保存，并修改%ebp的值为%esp，使得函数的参数可以通过%ebp和偏移量寻找到，而栈顶指针 %rsp可以用来分配其他空间；`push %ebp; mov %ebp, %esp;`
@@ -89,9 +89,9 @@ x86-64寄存器的名称及注释
 
 如图所示，是ia32的栈变换的效果
 
-![](imgs/ia32_stack_after_call.webp)
+![](../imgs/ia32_stack_after_call.webp)
 
-![](imgs/ia32_stack_after_call_and_exec.webp)
+![](../imgs/ia32_stack_after_call_and_exec.webp)
 
 ### 被调用者返回前的动作
 1. 将返回值保存在返回值寄存器`%eax %rax`中；
@@ -101,7 +101,7 @@ x86-64寄存器的名称及注释
 
 如图所示，是ia32的栈变换的效果
 
-![](imgs/ia32_stack_after_ret.webp)
+![](../imgs/ia32_stack_after_ret.webp)
 
 ### 调用者在返回后的操作
 1. 将传递给过程Q的参数出栈；

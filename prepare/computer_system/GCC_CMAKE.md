@@ -21,13 +21,13 @@ CMake是个一个开源的跨平台自动化建构系统，用来管理软件建
 ## 个人如何在 linux 使用 CMake 管理工程
 一般没有针对CMake的IDE，我们可以纯手敲，它有点儿像是在写代码，稍微容易点。我通常使用 `VSCode`或者`ATOM`等编译器，直接打开工程的根目录，然后便可以看到文件夹下的源代码文件，并且还可以比较简单美观的写代码。
 
-![](imgs/vscode_hello_cmake.png)
+![](../imgs/vscode_hello_cmake.png)
 
 ## 内部构建和外部构建，选择哪个？
 cmake 在执行时，会生产大量临时文件，如果直接在代码根目录执行`cmake .`命令，相信会看到比代码本身更多的临时文件。
-![](imgs/cmake_origin.png)
+![](../imgs/cmake_origin.png)
 
-![](imgs/cmake_inter.png)
+![](../imgs/cmake_inter.png)
 如上图，所有的临时文件直接出现在代码源文件夹，非常的不美观，而解决这种情况，一般的操作是**外部构建**。
 
 外部构建，通过在源文件夹外创建一个新的用于放置编译中间文件的文件夹，所有生成的工程管理临时文件、编译临时文件、编译最终生成文件都在该文件夹中。
@@ -41,10 +41,10 @@ make        # 编译
 make install    # 安装编译好的工程到指定路径
 ```
 
-![](imgs/cmake_out.png)
+![](../imgs/cmake_out.png)
 如上图，所有的临时文件都放置的在 build 文件夹中，如果需要调整，直接将 build 删除即可。对于版本管理工具`git`来讲，可以直接在`.gitignore`文件中加入一行`build/`以屏蔽对 build 文件夹的版本控制。build 文件夹内生成的文件如下图所示。
 
-![](imgs/cmake_out_build.png)
+![](../imgs/cmake_out_build.png)
 
 # Hello，CMake
 那么如何写一个 最初的 `CMake` 管理的程序呢？
