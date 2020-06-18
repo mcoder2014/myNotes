@@ -1,6 +1,6 @@
-# Sort algorithms
+# 排序算法 Sort algorithms
 
-# Insertion Sort
+# 插入排序 Insertion Sort
 插入排序，时间复杂度O(n^2)
 ```
 INSERTION-SORT(A)
@@ -14,7 +14,7 @@ for j = 2 to A.length
     A[i+1] = key
 ```
 
-# Merge Sort 
+# 归并排序 Merge Sort 
 归并排序属于分治法，分治法在结构上是递归的，将原问题分解为几个规模较小但类似于原问题的子问题，递归地求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
 时间复杂度O(nlogn)
 
@@ -109,57 +109,6 @@ HEAPSORT(A)
         MAX-HEAPIFY(A,i)
 ```
 
-## 优先队列
-一个最大优先队列维持S个元素，支持如下操作：
-- INSERT(S, x) 插入元素
-- MAXIMUM(S) 找到最大元素
-- EXTRACT-MAX(S) 找到最大元素并从队列中移出最大元素    
-- INCREASE-KEY(S, x, k) 调高某一个元素的优先值
-
-相反，最小优先队列支持如下操作：
-- INSERT(S, x)
-- MINIMUM(S)
-- EXTRACT-MIN(S)
-- DECREASE-KEY(S, x, k)
-
-
-### 找到最大值
-```
-HEAP-MAXIMUM(A)
-    return A[1]
-```
-
-### 找到并移出最大值
-```
-HEAP-EXTRACT-MAX(A)
-    if A.heap-size < 1
-        error "heap underflow"
-    max = A[1]
-    A[1] = A[A.heap-size]
-    A.heap-size = A.heap-size - 1
-    MAX-HEAPIFY(A, 1)
-    return max
-```
-
-### 增大某一个元素的优先值
-```
-HEAP-INCREASE-KEY(A, i, key)
-    if key < A[i]
-        error "new key is smaller than current key"
-    A[i] = key
-    while i > 1 and A[PARENT(i)] < A[i]
-        exchange A[i] with A[PARENT[i]]
-        i = PARENT[i]
-```
-
-### 插入元素
-```
-MAX-HEAP-INSERT(A, key)
-    A.heap-size = A.heap-size + 1
-    A[A.heap-size] = -INT_SIZE
-    HEAP-INCREASE-KEY(A, A.heap-size, key)
-```
-
 ## Leetcode
 ### [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 TODO:
@@ -167,7 +116,8 @@ TODO:
 TODO:
 ### [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 TODO:
-# 快排算法
+
+# 快排算法 Quick Sort
 快排是一种分治排序的方法，是原址排序，最差时间复杂度 O(n^2)，平均时间复杂度O(nlogn)。
 
 ```
@@ -187,8 +137,13 @@ PARTITION(A, p, r)
     exchange A[i+1] with A[r]
     return i+1
 ```
+**如何优化快速排序**
 
-# 计数排序
+1. 每次选择划分元素的时候，随机选择一个数
+2. 更苛刻，每次随机选择三个数，然后用中值作为分隔元素
+
+
+# 计数排序 Count Sort
 假设每一个输入元素都是整数类型，大小从0到k，记下比输入元素小的元素的个数，确定输出位置.
 不是基于比较的排序；
 
@@ -208,7 +163,7 @@ COUNTING-SORT(A, B, k)
         C[A[j]] = C[A[j]] - 1
 ```
 
-# 基数排序 Radix sort
+# 基数排序 Radix Sort
 对每一位上的数字进行排序，然后从个位一直排到最高位。
 ```
 RADIX-SORT(A, d)
@@ -231,7 +186,7 @@ BUCKET-SORT(A)
     concatenate the lists B[0], B[1], ..., B[n-1] together in order
 ```
 
-# 随机选择算法
+# 随机选择算法 Random Select Algorithm
 **问题描述**：为了快速找到一组数列中第i个大小的元素<br>
 **解决方法**
  利用快排算法思路，剪掉了一个分支，期望的时间复杂度O(n)，最坏时间复杂度O(n^2)
@@ -251,4 +206,4 @@ RANDOMIZED-SELECT(A, p, r, i)
 ```
 
 # reference
-1. [Algorithms 3rd]()
+1. [Algorithms 3rd](#)
