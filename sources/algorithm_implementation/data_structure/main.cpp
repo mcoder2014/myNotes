@@ -81,7 +81,7 @@ int main()
                   << "\tMaximum: " << binary_search_tree.maximum()->data
                   << "\n";
 
-        std::vector<int> bst_inorder_array = binary_search_tree.inorder_iterative();
+        std::vector<int> bst_inorder_array = binary_search_tree.inorderIterative();
         std::cout << "inorder:";
         for (int item: bst_inorder_array)
         {
@@ -91,9 +91,9 @@ int main()
 
         // 前序后继验证
         Mcoder::BinarySearchTreeNode<int> * pre = binary_search_tree.predecessor(
-                    binary_search_tree.search_iterative( bst_inorder_array[5]));
+                    binary_search_tree.searchIterative( bst_inorder_array[5]));
         Mcoder::BinarySearchTreeNode<int> * successor = binary_search_tree.successor(
-                    binary_search_tree.search_iterative( bst_inorder_array[5]));
+                    binary_search_tree.searchIterative( bst_inorder_array[5]));
         std::cout << "For node " << bst_inorder_array[5]
                   << "\tPredecessor: " << pre->data
                   << "\tSuccessor: " << successor->data
@@ -115,7 +115,7 @@ int main()
                   << "\tMaximum: " << binary_search_tree.maximum()->data
                   << "\n";
 
-        bst_inorder_array = binary_search_tree.inorder_iterative();
+        bst_inorder_array = binary_search_tree.inorderIterative();
         std::cout << "inorder:";
         for (int item: bst_inorder_array)
         {

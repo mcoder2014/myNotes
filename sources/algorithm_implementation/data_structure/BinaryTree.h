@@ -10,11 +10,22 @@ class BinaryTree
 {
 public:
     BinaryTree():val(),left(nullptr), right(nullptr){}
-    BinaryTree(T value):val(value),left(nullptr),right(nullptr){};
+    explicit BinaryTree(T value):val(value),left(nullptr),right(nullptr) {};
+
+    // 左孩子
     BinaryTree *left;
+
+    // 右孩子
     BinaryTree *right;
+
+    // 值
     T val;
 
+    /**
+     * @brief preOrder
+     * 前序遍历 迭代方式
+     * @return
+     */
     std::vector<T> preOrder()
     {
         std::stack<BinaryTree<T>*> stk;
@@ -39,6 +50,12 @@ public:
         }
         return result;
     }
+
+    /**
+     * @brief inOrder
+     * 中序遍历 迭代方式
+     * @return
+     */
     std::vector<T> inOrder()
     {
         std::stack<BinaryTree<T>*> stk;
@@ -64,6 +81,11 @@ public:
         return result;
     }
 
+    /**
+     * @brief postOrder
+     * 后续遍历 迭代方式
+     * @return
+     */
     std::vector<T> postOrder()
     {
         std::stack<BinaryTree<T>*> stk;
@@ -85,6 +107,11 @@ public:
         return result;
     }
 
+    /**
+     * @brief levelOrder
+     * 层次遍历 迭代方式
+     * @return
+     */
     std::vector<T> levelOrder()
     {
         std::vector<T> result;

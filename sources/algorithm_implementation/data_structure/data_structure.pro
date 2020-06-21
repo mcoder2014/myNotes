@@ -4,15 +4,16 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        binarytree.cpp \
         main.cpp
 
 HEADERS += \
     DataStructure \
-    binary_search_tree.h \
-    binarytree.h \
-    doublylinkedlist.h \
-    hash.h \
+    BinarySearchTreeNode.h \
+    BinaryTree.h \
+    DoublyLinkedList.h \
+    DoublyLinkedListArray.h \
+    DoublyLinkedListWithSentinel.h \
+    LinkedListNode.h \
     queue.h \
     red_black_tree.h \
     rootedtrees.h \

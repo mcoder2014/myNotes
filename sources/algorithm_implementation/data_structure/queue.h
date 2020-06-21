@@ -17,7 +17,7 @@ class Queue
     uint size;
 
     Queue();
-    Queue(uint size);
+     explicit Queue(uint size);
     ~Queue();
 
     void enqueue(basetype value);

@@ -66,11 +66,24 @@ public:
         }
 
     }
-    std::vector<basetype> inorder_iterative()
+
+    /**
+     * @brief inorder_iterative
+     * 迭代方式中序遍历
+     * @return std::vector<basetype>
+     */
+    std::vector<basetype> inorderIterative()
     {
-        return inorder_iterative(root);
+        return inorderIterative(root);
     }
-    std::vector<basetype> inorder_iterative(BinarySearchTreeNode<basetype> *root)
+
+    /**
+     * @brief inorder_iterative
+     * 递归方式中序遍历,实现算法
+     * @param root 根节点
+     * @return std::vector<basetype>
+     */
+    std::vector<basetype> inorderIterative(BinarySearchTreeNode<basetype> *root)
     {
         std::vector<basetype> ret;
 
@@ -97,6 +110,13 @@ public:
         return ret;
     }
 
+    /**
+     * @brief search
+     * 查找算法 递归
+     * @param x
+     * @param key
+     * @return
+     */
     BinarySearchTreeNode<basetype> *search(BinarySearchTreeNode<basetype> *x, const basetype& key)
     {
         if(x == nullptr || key == x->data)
@@ -107,7 +127,13 @@ public:
             return search(x->rchild, key);
     }
 
-    BinarySearchTreeNode<basetype> *search_iterative(const basetype& key)
+    /**
+     * @brief searchIterative
+     * 查找算法 迭代
+     * @param key
+     * @return
+     */
+    BinarySearchTreeNode<basetype> *searchIterative(const basetype& key)
     {
         BinarySearchTreeNode<basetype> *x = root;
         while(x!=nullptr && key != x->data)
@@ -120,11 +146,22 @@ public:
         return x;
     }
 
+    /**
+     * @brief minimum
+     * 最小节点
+     * @return
+     */
     BinarySearchTreeNode<basetype> *minimum()
     {
         return minimum(root);
     }
 
+    /**
+     * @brief minimum
+     * 最小节点
+     * @param node
+     * @return
+     */
     BinarySearchTreeNode<basetype> *minimum(BinarySearchTreeNode<basetype> *node)
     {
         if(node == nullptr)
@@ -134,6 +171,11 @@ public:
         return node;
     }
 
+    /**
+     * @brief maximum
+     * 最大节点
+     * @return
+     */
     BinarySearchTreeNode<basetype> *maximum()
     {
         return maximum(root);
@@ -148,6 +190,12 @@ public:
         return node;
     }
 
+    /**
+     * @brief successor
+     * 查找后继节点
+     * @param node
+     * @return
+     */
     BinarySearchTreeNode<basetype> *successor(BinarySearchTreeNode<basetype> *node)
     {
         // 右支的最小点
@@ -166,6 +214,12 @@ public:
         return y;
     }
 
+    /**
+     * @brief predecessor
+     * 前一个节点
+     * @param node
+     * @return
+     */
     BinarySearchTreeNode<basetype> *predecessor(BinarySearchTreeNode<basetype> *node)
     {
         // 左支的最大值
@@ -185,6 +239,12 @@ public:
         return y;
     }
 
+    /**
+     * @brief insert
+     * 插入算法
+     * @param value
+     * @return
+     */
     BinarySearchTreeNode<basetype> *insert(basetype value)
     {
         BinarySearchTreeNode<basetype> *node = new BinarySearchTreeNode<basetype>;
@@ -217,6 +277,12 @@ public:
         return node;
     }
 
+    /**
+     * @brief transplant
+     * 移植
+     * @param u
+     * @param v
+     */
     void transplant(BinarySearchTreeNode<basetype> *u, BinarySearchTreeNode<basetype> *v)
     {
         if(u->parent == nullptr)
@@ -230,6 +296,11 @@ public:
             v->parent = u->parent;
     }
 
+    /**
+     * @brief remove
+     * 删除算法
+     * @param z
+     */
     void remove(BinarySearchTreeNode<basetype> *z)
     {
         if(z->lchild == nullptr)
