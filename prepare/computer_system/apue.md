@@ -1,6 +1,7 @@
-# 一些借口的名称
+# 一些接口的名称
 
 ## 进程控制
+
 ```C++
 // 退出程序
 void exit(int status);  // 正常终止程序，并可调用清理函数
@@ -88,9 +89,9 @@ int nanosleep(const struct timespec *reqtp, struct timespec *remtp);    // 纳�
 int pthread_equal(pthread_t tid1, pthread_t tid2);  // 两个 pthred_t 是否相等
 pthread_t pthread_self(void);
 // 创建线程
-int pthread_create( pthread_t *restrict tidp, 
-                    const pthread_attr_t * restrict attr, 
-                    void *(*start_rtn)(void *), 
+int pthread_create( pthread_t *restrict tidp,
+                    const pthread_attr_t * restrict attr,
+                    void *(*start_rtn)(void *),
                     void *restrict arg);
 void pthread_exit(void *rval_ptr);  // 退出线程
 void pthread_join(pthread_t thread, void **rval_ptr);   // 阻塞线程，等待线程返回
@@ -134,8 +135,8 @@ int pthread_cond_init(pthred_cond_t *restrict cond,
                         const pthread_condattr_t *restrict attr);
 int pthread_cond_destroy(pthread_cond_t *cond);
 int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex *restrict mutex);
-int pthread_cond_timedwait(pthread_cond_t *cond, 
-                            pthread_mutex *restrict mutex, 
+int pthread_cond_timedwait(pthread_cond_t *cond,
+                            pthread_mutex *restrict mutex,
                             const struct timespec *restrict tsptr);
 int pthread_cond_signal(pthread_cond_t * cond);
 int pthread_cond_broadcast(pthread_cond_t *cond);
@@ -177,7 +178,7 @@ void *shmat(int shmid, const void *addr, int flag);
 int shmdt(const void *addr);
 
 // POSIX 信号量 semaphore
-sem_t *sem_open(const char *name, int oflag, ... 
+sem_t *sem_open(const char *name, int oflag, ...
                 /*mode_t mode, unsigned int value*/);
 int sem_close(sem_t *sem);
 int sem_unlink(const char *name);
