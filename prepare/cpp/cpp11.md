@@ -100,7 +100,7 @@ int main()
     std::list<std::thread> l;
     // copy() 无法编译，因为 std::thread 不可复制
 
-    std::move(v.begin(), v.end(), std::back_inserter(l)); 
+    std::move(v.begin(), v.end(), std::back_inserter(l));
     for (auto& t : l) t.join();
 }
 ```
@@ -121,9 +121,9 @@ auto add(T t, U u) { return t + u; } // 返回类型是 operator+(T, U) 的类�
 // 在其所调用的函数返回引用的情况下
 // 函数调用的完美转发必须用 decltype(auto)
 template<class F, class... Args>
-decltype(auto) PerfectForward(F fun, Args&&... args) 
+decltype(auto) PerfectForward(F fun, Args&&... args)
 {
-    return fun(std::forward<Args>(args)...); 
+    return fun(std::forward<Args>(args)...);
 }
 
 template<auto n> // C++17 auto 形参声明
@@ -222,8 +222,9 @@ C++11起已经不建议使用C语言样式的强制类型转换，推荐使用`s
 | - | - |
 | `static_cast` (常用) | 用于良性转换，一般不会导致意外发生，风险很低。 |
 | `const_cast`| 用于 const 与非 const、volatile 与非 volatile 之间的转换。|
-| `reinterpret_cast` | 高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。 | 
+| `reinterpret_cast` | 高度危险的转换，这种转换仅仅是对二进制位的重新解释，不会借助已有的转换规则对数据进行调整，但是可以实现最灵活的 C++ 类型转换。 |
 | `dynamic_cast` | 借助 RTTI，用于类型安全的向下转型（Downcasting）。 |
+
 [C++四种类型转换运算符：static_cast、dynamic_cast、const_cast和reinterpret_cast](http://c.biancheng.net/cpp/biancheng/view/3297.html)
 
 ## 智能指针

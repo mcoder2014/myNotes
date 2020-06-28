@@ -37,7 +37,7 @@ struct CAT_s
 
 ``` cpp
 //x64
-typedef union 
+typedef union
     long i;
     int k[5];
     char c;
