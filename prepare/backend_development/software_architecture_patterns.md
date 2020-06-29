@@ -6,19 +6,20 @@
 
 多层架构提供了一种模型，使得开发者可以建立方便扩展和复用的应用。通过将应用分成多层，开发者拥有修改或增加一个特定层的选择，而不是重写整个应用。一个三层架构通常由**表现层，业务逻辑层和数据存储层**组成。
 
-![](../imgs/closed_layers_and_request_access.png)
+![closed_layers_and_request_access](../imgs/closed_layers_and_request_access.png)
 
-![](../imgs/open_layers_and_request_flow.png)
+![closed_layers_and_request_access](../imgs/open_layers_and_request_flow.png)
 
 ## Event-Driven Architecture 事件驱动架构
-![](../imgs/event_driven_architecture_mediator_toplogy.png)
 
-![](../imgs/mediator_toplogy_example.png)
+![closed_layers_and_request_access](../imgs/event_driven_architecture_mediator_toplogy.png)
 
-![](../imgs/broker_toplogy_example.png)
+![closed_layers_and_request_access](../imgs/mediator_toplogy_example.png)
 
+![closed_layers_and_request_access](../imgs/broker_toplogy_example.png)
 
 ## Microkernel Architecture 微内核架构
+
 微核心的设计理念，是将系统服务的实现，与系统的基本操作规则区分开来。它实现的方式，是将核心功能模块化，划分成几个独立的行程，各自运行，这些行程被称为服务（service）。所有的服务行程，都运行在不同的地址空间。只有需要绝对特权的行程，才能在具特权的运行模式下运行，其余的行程则在用户空间运行。
 
 这样的设计，使内核中最核心的功能，设计上变的更简单。需要特权的行程，只有基本的线程管理，内存管理和进程间通信等，这个部分，由一个简单的硬件抽象层与关键的系统调用组成。其余的服务行程，则移至用户空间。
@@ -31,7 +32,7 @@
 
 就代码数量来看，一般来说，因为功能简化，微核心使用的代码比集成式核心更少，其源代码通常小于10,000行。例如，MINIX 3的源代码少于6,000行。更少的代码，也代表更少的潜藏程序bug，对于重视安全性的人来说会较为偏好。
 
-![](imgs/microkernel_architecture_pattern.png)
+![microkernel_architecture_pattern](imgs/microkernel_architecture_pattern.png)
 
 ## Microservices Architecture Pattern 微服务架构模式
 
@@ -43,24 +44,24 @@
 
 虽然使用一般的服务器虚拟化技术就能应用于微服务的管理，但容器技术 (Container Technology) 如 Docker 会更加地适合发展微服务的运算资源管理技术。
 
-![](../imgs/basic_microservices_architecture_pattern.png)
+![basic_microservices_architecture_pattern](../imgs/basic_microservices_architecture_pattern.png)
 
-![](../imgs/api_rest_based_toplogy.png)
+![api_rest_based_toplogy](../imgs/api_rest_based_toplogy.png)
 
-![](../imgs/application_rest_based_toplogy.png)
+![application_rest_based_toplogy](../imgs/application_rest_based_toplogy.png)
 
-![](../imgs/centralized_messaging_toplogy.png)
-
+![centralized_messaging_toplogy](../imgs/centralized_messaging_toplogy.png)
 
 ## Space-Based Architecture 基于空间的架构
+
 一种软件体系结构模式，用于使用元组空间范例实现有状态的高性能应用程序的线性可伸缩性。它遵循表示状态转移（REST），面向服务的体系结构（SOA）和事件驱动的体系结构（EDA）的许多原理，以及网格计算的元素。利用基于空间的体系结构，应用程序由一组称为处理单元（PU）的自给单元构建而成。这些单位彼此独立，因此应用程序可以通过添加更多单位来扩展。SBA模型与其他成功解决了应用程序可扩展性挑战的模式密切相关，例如Google，Amazon.com和其他知名公司使用的无共享架构（SN）。该模型也已被证券行业的许多公司用于实现可扩展的电子证券交易应用程序。
 
-![](../imgs/space_based_architecture_pattern.png)
+![space_based_architecture_pattern](../imgs/space_based_architecture_pattern.png)
 
-![](../imgs/processing_unit_component.png)
+![processing_unit_component](../imgs/processing_unit_component.png)
 
-![](../imgs/messaging_grid_component.png)
+![messaging_grid_component](../imgs/messaging_grid_component.png)
 
-![](../imgs/data_grid_component.png)
+![data_grid_component](../imgs/data_grid_component.png)
 
-![](../imgs/processing_grid_component.png)
+![processing_grid_component](../imgs/processing_grid_component.png)
