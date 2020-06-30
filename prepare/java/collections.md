@@ -342,3 +342,5 @@ System.out.println(numbersSet);
 
 1. [java-collections](https://howtodoinjava.com/java-collections/)
 2. [Top 40 Java collection interview questions and answers](https://howtodoinjava.com/interview-questions/useful-java-collection-interview-questions/)
+3. [【30期】说一下HashMap的实现原理？](https://zhuanlan.zhihu.com/p/107280444)
+4. [【29期】Java集合框架 10 连问，你有被问过吗？](https://zhuanlan.zhihu.com/p/95219932)

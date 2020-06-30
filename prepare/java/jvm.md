@@ -14,6 +14,6 @@ The JVM is called virtual because it provides a machine interface that does not 
 
 ## JRE JDK JVM 的关系
 
+## Reference
 
-# Reference
 1. [jdk-jre-jvm](https://howtodoinjava.com/java/basics/jdk-jre-jvm/)

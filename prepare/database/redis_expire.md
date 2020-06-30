@@ -55,3 +55,4 @@ AOF 重写：与生成 RDB 文件类似，执行重写 AOF 的过程中，程序
 ## Reference
 
 1. [Redis 设计与实现 第九章](https://item.jd.com/11486101.html)
+2. [【75期】面试官：说说Redis的过期键删除策略吧！（高频）](https://zhuanlan.zhihu.com/p/139423463)

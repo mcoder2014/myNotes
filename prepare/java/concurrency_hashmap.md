@@ -15,3 +15,4 @@ HashEntry是目前提到最小的逻辑处理单元了。一个ConcurrentHashMap
 ## 参考
 
 1. [ConcurrentHashMap 原理解析（JDK1.8）](https://www.jianshu.com/p/d10256f0ebea)
+2. [【67期】谈谈ConcurrentHashMap是如何保证线程安全的？](https://zhuanlan.zhihu.com/p/139423275)
