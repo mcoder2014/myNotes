@@ -1,8 +1,10 @@
 # 排序算法 Sort algorithms
 
-# 插入排序 Insertion Sort
+## 插入排序 Insertion Sort
+
 插入排序，时间复杂度O(n^2)
-```
+
+```fake
 INSERTION-SORT(A)
 for j = 2 to A.length
     key = A[j]
@@ -14,17 +16,20 @@ for j = 2 to A.length
     A[i+1] = key
 ```
 
-# 归并排序 Merge Sort 
+## 归并排序 Merge Sort
+
 归并排序属于分治法，分治法在结构上是递归的，将原问题分解为几个规模较小但类似于原问题的子问题，递归地求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
 时间复杂度O(nlogn)
 
 分治法在每层递归时都包含三个步骤：
+
 - 分解：分解原问题为若干子问题，这些子问题是原问题的规模较小的实例。
 - 解决：解决这些子问题，递归地求解各子问题。如果子问题的规模足够小，就可以直接求解。
 - 合并：将子问题的解合并为原问题的解。
 
 归并排序的合并
-```
+
+```fake
 MERGE(A, p, q, r)
 n1 = q - p + 1
 n2 = r - q
@@ -41,13 +46,14 @@ for k = p to rshijianfuzadu
     if L[i] <= R[j]
         A[k] = L[i]
         i = i + 1
-    else 
+    else
         A[k] = R[j]
         j = j+1
 ```
 
 归并排序
-```
+
+```fake
 MERGE-SORT(A, p, r)
 if p < r
     q = (p + r)/2
@@ -56,16 +62,17 @@ if p < r
     MERGE(A, p, q, r)
 ```
 
-# (二叉)堆
 ## Heapsort 堆排序
+
 堆指的是完全二叉树，分为最大堆最小堆。用数组表示时，很容易找到父子节点， 找到i节点的父节点 `parient(i) = i/2;`，左子节点 `left(i) = 2 * i;`， 右子节点 `right(i) = 2 * i + 1;`.
 堆有一些基本过程：
+
 - Max-Heapify 过程，时间复杂度 `O(logn)`，是维护最大堆性质的关键;
 - Build-Max-Heap 过程，具有线性时间复杂度，功能是从无序的输入数组中构造一个最大堆;
 - Heapsort 过程，时间复杂度`O(nlogn)`，功能是对一个数组进行原址排序;
 - Max-Heap-Insert, Heap-Extract-Max, Heap-Increase-Key, Heap-Maximum 过程，时间复杂度`O(logn)`，利用堆数据结构实现一个优先队列;
 
-```
+```fake
 PARIENT(i)
     return i/2
 
@@ -77,7 +84,8 @@ RIGHT(i)
 ```
 
 ### 维持堆的性质
-```
+
+```fake
 MAX-HEAPIFY(A, i)
     l = LEFT(i)
     r = RIGHT(i)
@@ -92,7 +100,8 @@ MAX-HEAPIFY(A, i)
 ```
 
 ### 构建堆
-```
+
+```fake
 BUILD-MAX-HEAP(A)
     A.heap-size = A.length
     for i = [A.length/2] downto 1
@@ -100,7 +109,8 @@ BUILD-MAX-HEAP(A)
 ```
 
 ### 堆排序
-```
+
+```fake
 HEAPSORT(A)
     BUILD-MAX-HEAP(A)
     for i = A.length downto 2
@@ -110,17 +120,24 @@ HEAPSORT(A)
 ```
 
 ## Leetcode
+
 ### [23. Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
-TODO:
-### [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
-TODO:
-### [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+
 TODO:
 
-# 快排算法 Quick Sort
+### [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+
+TODO:
+
+### [295. Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+
+TODO:
+
+## 快排算法 Quick Sort
+
 快排是一种分治排序的方法，是原址排序，最差时间复杂度 O(n^2)，平均时间复杂度O(nlogn)。
 
-```
+```fake
 QUICKSORT(A, p, r)
     if p < r
         q = PARTITION(A, p, r)
@@ -137,17 +154,18 @@ PARTITION(A, p, r)
     exchange A[i+1] with A[r]
     return i+1
 ```
-**如何优化快速排序**
+
+### 如何优化快速排序
 
 1. 每次选择划分元素的时候，随机选择一个数
 2. 更苛刻，每次随机选择三个数，然后用中值作为分隔元素
 
+## 计数排序 Count Sort
 
-# 计数排序 Count Sort
 假设每一个输入元素都是整数类型，大小从0到k，记下比输入元素小的元素的个数，确定输出位置.
 不是基于比较的排序；
 
-```
+```fake
 COUNTING-SORT(A, B, k)
     let C[0..k] be a new array
     for i = 0 to k
@@ -163,17 +181,21 @@ COUNTING-SORT(A, B, k)
         C[A[j]] = C[A[j]] - 1
 ```
 
-# 基数排序 Radix Sort
+## 基数排序 Radix Sort
+
 对每一位上的数字进行排序，然后从个位一直排到最高位。
-```
+
+```fake
 RADIX-SORT(A, d)
     for i = 1 to d
         use a stable sort to sort array A on digit i
 ```
 
-# 桶排序 bucket sort
+## 桶排序 bucket sort
+
 通排序假设输入是[0,1],平均分布的小数，所以很少出现落在同一个区间的情况，平均时间复杂度O(n)
-```
+
+```fake
 BUCKET-SORT(A)
     let B[0..n-1] be a new array
     n = A.length
@@ -186,12 +208,13 @@ BUCKET-SORT(A)
     concatenate the lists B[0], B[1], ..., B[n-1] together in order
 ```
 
-# 随机选择算法 Random Select Algorithm
-**问题描述**：为了快速找到一组数列中第i个大小的元素<br>
-**解决方法**
- 利用快排算法思路，剪掉了一个分支，期望的时间复杂度O(n)，最坏时间复杂度O(n^2)
+## 随机选择算法 Random Select Algorithm
 
-```
+**问题描述**：为了快速找到一组数列中第i个大小的元素
+
+**解决方法** 利用快排算法思路，剪掉了一个分支，期望的时间复杂度O(n)，最坏时间复杂度O(n^2)
+
+```fake
 RANDOMIZED-SELECT(A, p, r, i)
     if p == r
         return A[p]
@@ -205,5 +228,6 @@ RANDOMIZED-SELECT(A, p, r, i)
         return RANDOMIZED-SELECT(A, q + 1, r, i - k)
 ```
 
-# reference
-1. [Algorithms 3rd](#)
+## reference
+
+1. [Algorithms 3rd](https://item.jd.com/11144230.html)
