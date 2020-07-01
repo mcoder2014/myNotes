@@ -345,6 +345,13 @@ bool IsAVL(BinaryTreeNode * pRoot, int & height)
 
 ### 判断是否为完全二叉树
 
+解题思路：
+
+1. 按层遍历二叉树，每层自左向右遍历所有节点；
+2. 如果当前节点有右孩子，没有左孩子，返回false；
+3. 如果当前节点不是左右孩子都有，则后续节点皆为叶子节点，否则false；
+4. 如果不返回false，则为 true；
+
 ```cpp
 bool IsCompleteBinaryTree(BinaryTreeNode * pRoot)
 {
