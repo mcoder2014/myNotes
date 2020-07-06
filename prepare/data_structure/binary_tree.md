@@ -10,7 +10,7 @@
 
 ## 查找树
 
-二叉查找树、红黑树、平衡二叉树都属于二叉查找树。
+二叉查找树、红黑树、平衡二叉树都属于二叉查找树。查找树具有的特性：根节点的左孩子都比根节点小、根节点的右孩子都比根节点大。
 
 ### 平衡二叉树
 
@@ -321,7 +321,8 @@ void Convert(BinaryTreeNode * pRoot,
 ```cpp
 bool IsAVL(BinaryTreeNode * pRoot, int & height)
 {
-    if(pRoot == NULL) // 空树，返回真
+    // 空树，返回真
+    if(pRoot == NULL)
     {
         height = 0;
         return true;
@@ -330,7 +331,9 @@ bool IsAVL(BinaryTreeNode * pRoot, int & height)
     bool resultLeft = IsAVL(pRoot->m_pLeft, heightLeft);
     int heightRight;
     bool resultRight = IsAVL(pRoot->m_pRight, heightRight);
-    if(resultLeft && resultRight && abs(heightLeft - heightRight) <= 1) // 左子树和右子树都是AVL，并且高度相差不大于1，返回真
+
+    // 左子树和右子树都是AVL，并且高度相差不大于1，返回真
+    if(resultLeft && resultRight && abs(heightLeft - heightRight) <= 1)
     {
         height = max(heightLeft, heightRight) + 1;
         return true;
@@ -365,7 +368,9 @@ bool IsCompleteBinaryTree(BinaryTreeNode * pRoot)
     {
         BinaryTreeNode * pNode = q.front();
         q.pop();
-        if(mustHaveNoChild) // 已经出现了有空子树的节点了，后面出现的必须为叶节点（左右子树都为空）
+
+        // 已经出现了有空子树的节点了，后面出现的必须为叶节点（左右子树都为空）
+        if(mustHaveNoChild)
         {
             if(pNode->m_pLeft != NULL || pNode->m_pRight != NULL)
             {
