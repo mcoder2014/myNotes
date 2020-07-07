@@ -65,44 +65,44 @@ Content-Type: text/plain
 
 ### HTTP 报头字段
 
-- Content-Type 指示网络文件的类型或者网页的编码
+* Content-Type 指示网络文件的类型或者网页的编码
 
     ```HTTP
     Content-Type: text/html; charset=utf-8
     Content-Type: multipart/form-data; boundary=something
     ```
 
-- Accept 能够接受的回应内容类型 `Accept: text/plain`
-- Accept-Charset 能够接受的字符集 `Accept-Charset: utf-8`
-- Accept-Encoding 能够接受的编码格式 `Accept-Encoding: gzip, deflate`
-- Accept-Language 能够接受的自然语言列表 `Accept-Language: en-US`
-- Authorization 认证信息 `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`
-- Cache-Control 设置 cache 机制 `Cache-Control: no-cache`
-- Connection 设置连接类型 `Connection: keep-alive Connection: Upgrade`
-- Content-Length 请求体长度 `Content-Length: 348`
-- Host 服务器域名,自超文件传输协议版本1.1（HTTP/1.1）开始便是必需字段。 `Host: en.wikipedia.org`
-- Origin 跨域资源访问 `Origin: http://www.example-social-network.com`
-- User-Agent 用户的浏览器身份标识 `User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0`
-- Upgrade 请求服务器升级协议 `Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11`
+* Accept 能够接受的回应内容类型 `Accept: text/plain`
+* Accept-Charset 能够接受的字符集 `Accept-Charset: utf-8`
+* Accept-Encoding 能够接受的编码格式 `Accept-Encoding: gzip, deflate`
+* Accept-Language 能够接受的自然语言列表 `Accept-Language: en-US`
+* Authorization 认证信息 `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`
+* Cache-Control 设置 cache 机制 `Cache-Control: no-cache`
+* Connection 设置连接类型 `Connection: keep-alive Connection: Upgrade`
+* Content-Length 请求体长度 `Content-Length: 348`
+* Host 服务器域名,自超文件传输协议版本1.1（HTTP/1.1）开始便是必需字段。 `Host: en.wikipedia.org`
+* Origin 跨域资源访问 `Origin: http://www.example-social-network.com`
+* User-Agent 用户的浏览器身份标识 `User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0`
+* Upgrade 请求服务器升级协议 `Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11`
 
 ### 响应码
 
-- 1** 服务器收到请求，需要请求者继续执行操作
-  - 100 continue 客户端继续请求
-  - 101 switching proptcols 切换协议
-- 2** 成功
-  - 200 OK 请求成功。 Get post
-  - 201 Created 已创建，成功请求并创建了新的资源
-  - 202 Accepted 已接收，但未完成处理
-- 3** 重定向
-  - 301 永久重定向
-  - 302 临时移动
-- 4** 客户端错误
-  - 401 客户需要身份认证
-  - 403 无访问权限
-  - 404 页面不存在
-- 5** 服务端错误
-  - 500 服务器内部错误
+* 1** 服务器收到请求，需要请求者继续执行操作
+  * 100 continue 客户端继续请求
+  * 101 switching proptcols 切换协议
+* 2** 成功
+  * 200 OK 请求成功。 Get post
+  * 201 Created 已创建，成功请求并创建了新的资源
+  * 202 Accepted 已接收，但未完成处理
+* 3** 重定向
+  * 301 永久重定向
+  * 302 临时移动
+* 4** 客户端错误
+  * 401 客户需要身份认证
+  * 403 无访问权限
+  * 404 页面不存在
+* 5** 服务端错误
+  * 500 服务器内部错误
 
 ### 幂等性
 
@@ -115,6 +115,38 @@ Content-Type: text/plain
 1. MVCC 乐观锁：版本号不一致的操作无法执行
 2. 去重
 3. Token 机制：token 使用一次后失效
+
+### HTTP 协议版本
+
+#### HTTP 1.0
+
+默认短连接
+
+#### HTTP 1.1
+
+**在这个版本中持久连接被默认采用**，并能很好地配合代理服务器工作。还**支持以管道方式在同时发送多个请求**，以便降低线路负载，提高传输速度。
+
+#### HTTP 2.0
+
+* **多路复用 (Multiplexing)**
+
+  多路复用允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。在 HTTP/1.1 协议中浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞。这也是为何一些站点会有多个静态资源 CDN 域名的原因之一，拿 Twitter 为例，[http://twimg.com](http://twimg.com)，目的就是变相的解决浏览器针对同一域名的请求限制阻塞问题。而 HTTP/2 的多路复用(Multiplexing) 则允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。因此 HTTP/2 可以很容易的去实现多流并行而不用依赖建立多个 TCP 连接，HTTP/2 把 HTTP 协议通信的基本单位缩小为一个一个的帧，这些帧对应着逻辑流中的消息。并行地在同一个 TCP 连接上双向交换消息。
+
+* **二进制分帧**
+
+  HTTP/2在 应用层(HTTP/2)和传输层(TCP or UDP)之间增加一个二进制分帧层。在不改动 HTTP/1.x 的语义、方法、状态码、URI 以及首部字段的情况下, 解决了HTTP1.1 的性能限制，改进传输性能，实现低延迟和高吞吐量。在二进制分帧层中， HTTP/2 会将所有传输的信息分割为更小的消息和帧（frame）,并对它们采用二进制格式的编码 ，其中 HTTP1.x 的首部信息会被封装到 HEADER frame，而相应的 Request Body 则封装到 DATA frame 里面。
+
+  HTTP/2 通信都在一个连接上完成，这个连接可以承载任意数量的双向数据流。在过去， HTTP 性能优化的关键并不在于高带宽，而是低延迟。TCP 连接会随着时间进行自我调谐，起初会限制连接的最大速度，如果数据成功传输，会随着时间的推移提高传输的速度。这种调谐则被称为 TCP 慢启动。由于这种原因，让原本就具有突发性和短时性的 HTTP 连接变的十分低效。HTTP/2 通过让所有数据流共用同一个连接，可以更有效地使用 TCP 连接，让高带宽也能真正的服务于 HTTP 的性能提升。
+
+  这种单连接多资源的方式，减少服务端的链接压力,内存占用更少,连接吞吐量更大；而且由于 TCP 连接的减少而使网络拥塞状况得以改善，同时慢启动时间的减少,使拥塞和丢包恢复速度更快。
+
+* **首部压缩（Header Compression）**
+
+  HTTP/1.1并不支持 HTTP 首部压缩，为此 SPDY 和 HTTP/2 应运而生， SPDY 使用的是通用的DEFLATE 算法，而 HTTP/2 则使用了专门为首部压缩而设计的 HPACK 算法。
+
+* **服务端推送（Server Push）**
+
+  服务端推送是一种在客户端请求之前发送数据的机制。在 HTTP/2 中，服务器可以对客户端的一个请求发送多个响应。Server Push 让 HTTP1.x 时代使用内嵌资源的优化手段变得没有意义；如果一个请求是由你的主页发起的，服务器很可能会响应主页内容、logo 以及样式表，因为它知道客户端会用到这些东西。这相当于在一个 HTML 文档内集合了所有的资源，不过与之相比，服务器推送还有一个很大的优势：可以缓存！也让在遵循同源的情况下，不同页面之间可以共享缓存资源成为可能。
 
 ## https
 
