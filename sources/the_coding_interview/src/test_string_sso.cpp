@@ -14,6 +14,7 @@ public:
         printf("s : %p---->%p\n", &s, s.c_str());
         printf("_s: %p---->%p\n", &_s, _s.c_str());
         printf("_value: %s\n", _value);
+        printf("_value addr: %p\n", _value);
     }
     string _s;
     const char *_value;
@@ -22,6 +23,8 @@ public:
 C *func()
 {
     string a = "aaa"; //rc = 1
+    printf("a addr: %p\n", &a);
+    printf("a.c_str() addr: %p\n", a.c_str());
     return new C(a);
 }
 int main(int argc, char *argv[])
