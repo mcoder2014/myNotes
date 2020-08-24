@@ -19,8 +19,7 @@ public:
 
     bool isInLoopThread() const 
     {
-        // TODO: fix
-        return true;
+        return threadId == std::this_thread::get_id();
     }
 
     static EventLoop* getEventLoopOfCurrentThread();

@@ -2,6 +2,8 @@
 
 #include <assert.h>
 
+#include <iostream>
+
 // unix support
 #include <poll.h>
 
@@ -39,4 +41,10 @@ void EventLoop::loop()
     ::poll(nullptr, 0, 5*1000);
 
     looping = false;
+}
+
+void EventLoop::abortNotInLoopThread()
+{
+    printf("abort\n");
+    exit(1);
 }

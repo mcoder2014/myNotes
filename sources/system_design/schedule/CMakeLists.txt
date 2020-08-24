@@ -20,5 +20,8 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # library
 add_library(schedule SHARED ${SCHEDULE_HEADERS} ${SCHEDULE_SOURCES})
 
+link_directories(/usr/lib)
+target_link_libraries(schedule pthread)
+
 # example
 add_subdirectory(example)
