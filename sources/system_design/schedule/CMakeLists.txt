@@ -9,10 +9,12 @@ message("output path ${EXECUTABLE_OUTPUT_PATH}")
 message("output library path ${LIBRARY_OUTPUT_PATH}")
 
 set(SCHEDULE_HEADERS 
-    include/schedule.h)
+    include/schedule.h
+    include/EventLoop.h)
 
 set(SCHEDULE_SOURCES
-    src/schedule.cpp)
+    src/schedule.cpp
+    src/EventLoop.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 # library
