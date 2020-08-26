@@ -67,6 +67,8 @@ public class ArrayList<E> extends AbstractList<E>
 
 ### HashMap
 
+[HashMap 夺命二十一问](https://mp.weixin.qq.com/s?__biz=MzI5NTYwNDQxNA==&mid=2247488074&idx=2&sn=195d131805ab67eafad67825aa49eeba&chksm=ec504b9bdb27c28d3a735df5adc6eb6260c30a5070c701a6db951ee6fa6233c2ed400aa1025e&scene=126&sessionid=1598416735&key=de6c5d3f2e6b365e6c875b3555179e4fda472e5c19747ef07b82adade46a36bee57ad2bb07e4f6acb7e6998035a63c9b7fea37a470e20bfa58de8a7ee6ac71eeed4943babc87df986f53164bd3d61342e3351659a96397c6fd91b93b707f734fac6630d0b8fdf6c1948e7626a1a500a72cd06c0f261c9113ea66d823a64a0ba5&ascene=1&uin=MjM1Mzc3NDI2Mw%3D%3D&devicetype=Windows+10+x64&version=62090529&lang=zh_CN&exportkey=AW262tx8ry2ZE8z%2BP66Rf1Y%3D&pass_ticket=6ms91QUYt9GyrVfOM6g3flhy7rmdrHh8Ez8%2ByTpwt94UCX79vJHVWp3O1mUkAK42)
+
 HashMap 基于哈希函数，每个 object 都有哈希 code，两个相等的 objects 一定能产生相同的 hash code，特点：
 
 1. 不能包含重复的 key
